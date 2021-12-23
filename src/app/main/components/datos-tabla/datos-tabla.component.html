@@ -1,0 +1,55 @@
+<table class="bordered">
+        <caption style="color: white; font-size: 20px;">{{ tituloTabla }}</caption>
+        <thead>
+                <tr>
+                        <th> Flujo </th>
+                        <th> Variable </th>
+                        <th> Tipo <span>(IMD/Auto)</span></th>
+                        <th> Periodo </th>
+                        <th> Fecha <span>Último valor</span></th>
+                        <th> Último Valor </th>
+                        <th> Rango Mínimo </th>
+                        <th> Rango Máximo </th>
+                        <th> Offset Actualización </th>
+                        <th> Responsable </th>
+                        <th>Tiempo Operativo Mes Actual %</th>
+                        <th> Estado Actualización dato</th>
+                        <th> Estado Calidad Datos </th>
+                        <th> Estado Fuera Rango </th>
+                        <!-- <th> Estado No Ingreso <span>(IMD)</span></th> -->
+                </tr>
+        </thead>
+        <tbody>
+                <tr *ngFor="let item of valores">
+                        <td nowrap>{{ item.Flujo }}</td>
+                        <td nowrap>{{ item.Descriptor }}</td>
+                        <td nowrap>{{ item['Tipo de Dato'] }}</td>
+                        <td nowrap>{{ item.Periodo }}</td>
+                        <td nowrap>{{ item['Fecha Actual'] }}</td>
+                        <td nowrap>{{ item['Valor actual'] | number:'1.0-0' }}</td>
+                        <td nowrap>{{ item['Rango Variable_Minimo'] }}</td>
+                        <td nowrap>{{ item['Rango Variable_Maximo'] }}</td>
+                        <td nowrap>{{ item['Offset Actualizacion (Horas)'] }}</td>
+                        <td nowrap>{{ item['Responsable (IMD)'] }}</td>
+                        <td nowrap>{{ item.Tiempo_Operativo_Mes_Actual | number:'1.0-0' }}</td>
+                        <td nowrap><img src='../../../../../assets/images/avatars/{{ item.Estado_Actualizacion_Dato == 0 ? "verde.png" : item.Estado_Actualizacion_Dato> 0 ? "rojo.png": "plomo.png" }}'
+                                        alt="image" /></td>
+                        <!-- <span
+                    [ngClass]="{green: item['Estado Actualizacion Dato']===0, red: item['Estado Actualizacion Dato']===1 }">{{
+                    item['Estado Actualizacion Dato'] }}</span></td> -->
+                        <td nowrap><img src='../../../../../assets/images/avatars/{{ item.Estado_Calidad_Dato == 0 ? "verde.png" : item.Estado_Calidad_Dato> 0 ? "rojo.png": "plomo.png" }}'
+                                        alt="image" /></td>
+                        <!-- <span
+                    [ngClass]="{green: item['Estado Calidad Dato']===0, red: item['Estado Calidad Dato']===1 }">{{
+                    item['Estado Calidad Dato'] }}</span></td> -->
+                        <td nowrap><img src='../../../../../assets/images/avatars/{{ item.Estado_Fuera_Rango == 0 ? "verde.png" : item.Estado_Fuera_Rango > 0 ? "rojo.png": "plomo.png" }}'
+                                        alt="image" /></td>
+                        <!-- <span
+                    [ngClass]="{green: item['Estado Fuera Rango']===0, red: item['Estado Fuera Rango']===1 }">{{
+                    item['Estado Fuera Rango'] }}</span></td> -->
+                        <!-- <td><span
+                    [ngClass]="{green: item['Estado No Ingreso (IMD)']===1, red: item['Estado No Ingreso (IMD)']===0 }">{{
+                    item['Estado No Ingreso (IMD)'] }}</span></td> -->
+                </tr>
+        </tbody>
+</table>

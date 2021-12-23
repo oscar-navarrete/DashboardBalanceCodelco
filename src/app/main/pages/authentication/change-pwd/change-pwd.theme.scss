@@ -1,0 +1,18 @@
+@mixin change-pwd-theme($theme) {
+    $background: map-get($theme, background);
+    $is-dark: map-get($theme, is-dark);
+    change-pwd {
+        #change-pwd {
+            #change-pwd-form-wrapper {
+                #change-pwd-form {
+                    @if ($is-dark) {
+                        background: mat-color($fuse-navy, 600);
+                    }
+                    @else {
+                        background: map-get($background, card);
+                    }
+                }
+            }
+        }
+    }
+}

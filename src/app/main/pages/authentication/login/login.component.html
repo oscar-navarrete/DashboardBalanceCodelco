@@ -1,0 +1,66 @@
+<div id="login" fxLayout="column" *ngIf="viewLogin">
+
+    <div id="login-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+        <div id="login-form" style="border-radius: 15px !important;" [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+
+            <div class="logo">
+                <img style="border-radius: 10px;" src="assets/images/logos/logo_app.png">
+            </div>
+
+            <div class="title secondary-text">Acceso a la Plataforma</div>
+
+            <form name="loginForm" [formGroup]="loginForm" novalidate>
+
+                <mat-form-field appearance="outline" *ngIf="authType==='application'">
+                    <mat-label>Correo electrónico / Nombre de Usuario</mat-label>
+                    <input matInput formControlName="email">
+                    <mat-icon matSuffix class="secondary-text">mail</mat-icon>
+                    <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                        Se requiere correo electrónico
+                    </mat-error>
+                    <mat-error *ngIf="!loginForm.get('email').hasError('required') &&
+                                loginForm.get('email').hasError('email')">
+                        Ingrese una dirección de correo válida
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" *ngIf="authType==='activeDirectory'">
+                    <mat-label>Usuario de Dominio</mat-label>
+                    <input matInput formControlName="email">
+                    <mat-icon matSuffix class="secondary-text">domain</mat-icon>
+                    <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                        Se requiere un usuario de AD (Dominio\Usuario)
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput type="password" formControlName="password">
+                    <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
+                    <mat-error>
+                        Se requiere la contraseña
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="remember-forgot-password" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center">
+                    <mat-checkbox class="remember-me" aria-label="Remember Me" (change)="remember($event.checked)" formControlName="remember" name="remember">
+                        Recordar
+                    </mat-checkbox>
+
+                    <a class="forgot-password" *ngIf="authType==='application'" [routerLink]="'/pages/auth/forgot-password'">
+                        ¿Olvidó su contraseña?
+                    </a>
+                </div>
+
+                <button mat-raised-button color="accent" class="submit-button" aria-label="LOG IN" [disabled]="loginForm.invalid || sending" (click)="login()">
+                    LOGIN
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

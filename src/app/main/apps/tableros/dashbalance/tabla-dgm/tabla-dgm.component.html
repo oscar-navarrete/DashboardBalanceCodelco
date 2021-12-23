@@ -1,0 +1,41 @@
+<div class="container white h-100-p w-100-p">
+    <!-- <app-dash-title title="Monitoreo Balance DMH - Óxidos" icon="dashboard"></app-dash-title> -->
+    <!-- <div fxLayout="row" class="banner-column">
+        <div fxFlex="50">
+            <img src="../../../../../../assets/images/logos/logoCodelco.png" alt="Logo Codelco"
+                class="banner-logo-corporativo"> 
+            <div class="banner-barra-titulos"><span style="color: white;">Portal Operacional Balance Metalúrgico</span>
+            </div>
+        </div>
+        <div fxFlex="50">
+            <div class="banner-barra-titulos">
+                <span class="subtitle-banner"> Monitoreo Balance por Areas</span>
+            </div>
+        </div>
+    </div> -->
+    <div fxLayout="row" class="banner-column">
+        <div fxFlex="10">
+            <img class="logo-corporativo" src="../../../../../../assets/images/avatars/logocodelco.png"
+                alt="Logo Codelco" />
+        </div>
+        <div fxFlex="90">
+            <div class="banner-barra-titulos">
+                <span style="color: white;">MONITOREO BALANCE METALÚRGICO DGM</span><span class="subtitle-banner"> MES:
+                    {{ this.mes | uppercase }} </span>
+            </div>
+        </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center center" style="margin-top: 20px">
+        <app-datos-tabla [tituloTabla]="' Patio Catodos '" [valores]=datosPatioCatodosDgm></app-datos-tabla>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center center" style="margin-top: 20px">
+        <app-datos-tabla [tituloTabla]="' Área Húmeda '" [valores]=datosAreaHumedaDgm></app-datos-tabla>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center center" style="margin-top: 20px">
+        <app-datos-tabla [tituloTabla]="' Área Seca '" [valores]=datosAreaSecaDgm></app-datos-tabla>
+    </div>
+
+</div>

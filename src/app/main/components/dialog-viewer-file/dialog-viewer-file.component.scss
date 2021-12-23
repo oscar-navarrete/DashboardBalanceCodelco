@@ -1,0 +1,80 @@
+@import "src/@fuse/scss/fuse";
+.dialog-file{
+    @include media-breakpoint('xs') {
+        width: 100%;
+    }
+    @include media-breakpoint('gt-xs') {
+        width: 60%;
+        height: 85vh;
+    }
+    .mat-dialog-container {
+        padding: 0;
+        .mat-toolbar {
+            flex: 1 0 auto;
+            min-height: initial;
+        }
+        .toolbar-bottom {
+            height: auto;
+        }
+    }
+    .dialog-content-wrapper {
+        //max-height: 85vh;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    h3{
+        font-size: 20px;
+        font-weight: 600;
+        color: #38424c;
+    }
+    mat-toolbar-row{
+        height: 60px !important;
+    }
+    mat-toolbar{
+        max-height: 60px !important
+    }
+}
+.dialog-file-full-screen{
+    @include media-breakpoint('xs') {
+        width: 100%;
+    }
+    @include media-breakpoint('gt-xs') {
+        width: 100vw;
+        height: 100vh;
+    }
+    .mat-dialog-container {
+        padding: 0;
+        .mat-toolbar {
+            flex: 1 0 auto;
+            min-height: initial;
+        }
+        .toolbar-bottom {
+            height: auto;
+        }
+    }
+    .dialog-content-wrapper {
+        //max-height: 85vh;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    h3{
+        font-size: 20px;
+        font-weight: 600;
+        color: #38424c;
+    }
+    mat-toolbar-row{
+        height: 40px !important;
+    }
+    mat-toolbar{
+        max-height: 40px !important
+    }
+}
+
+.special-height{
+    height: calc(100vh - 200px);
+}
+.special-height-full{
+    height: calc(100vh - 40px);
+}

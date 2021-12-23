@@ -1,0 +1,79 @@
+<div class="sidebar-content">
+
+    <div class="card">
+
+        <!-- SIDEBAR HEADER -->
+        <div class="header p-12" fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon>apps</mat-icon>
+            <span class="h4 font-weight-800">&nbsp;Aplicaciones</span>
+        </div>
+        <!-- / SIDEBAR HEADER -->
+
+        <!-- SIDEBAR CONTENT -->
+        <div class="content py-16" fusePerfectScrollbar>
+            <div class="nav material2">
+                <div *ngFor="let system of _dataService.recordSystem" class="nav-item" (click)="changeSystemFilter(system.id)">
+                    <a class="nav-link" matRipple [ngClass]="{'active accent':systemFilterBy === system.id}">
+                        <div class="title">{{system.name}}</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <!-- SIDEBAR HEADER -->
+        <div class="header p-12" fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon>verified_user</mat-icon>
+            <span class="h4 font-weight-800">&nbsp;Estado</span>
+        </div>
+        <!-- / SIDEBAR HEADER -->
+
+        <!-- SIDEBAR CONTENT -->
+        <div class="content py-16" fusePerfectScrollbar>
+            <div class="nav material2">
+                <div class="nav-item" aria-label="inbox">
+                    <a class="nav-link" matRipple (click)="changeFilter('active')" [ngClass]="{'active accent-100':filterBy === 'active'}">
+                        <span class="title">Características activas</span>
+                    </a>
+                </div>
+                <div class="nav-item" aria-label="inbox">
+                    <a class="nav-link" matRipple (click)="changeFilter('disabled')" [ngClass]="{'active accent-100':filterBy === 'disabled'}">
+                        <span class="title">Características deshabilitadas</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+
+        <!-- SIDEBAR HEADER -->
+        <div class="header p-12" fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon>group</mat-icon>
+            <span class="h4 font-weight-800"> &nbsp;Grupos de Usuario</span>
+        </div>
+        <!-- / SIDEBAR HEADER -->
+
+        <!-- SIDEBAR CONTENT -->
+        <div class="content py-16" fusePerfectScrollbar>
+            <div class="search-wrapper mt-16 mt-sm-0" fxLayoutAlign="start center">
+                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <mat-form-field class="input-search">
+                        <mat-placeholder class="placeholder">
+                            <mat-icon class="search-icon">search</mat-icon>Buscar</mat-placeholder>
+                        <input class="input-search" matInput [formControl]="searchInput" type="text">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="nav material2 user-group">
+                <div *ngFor="let group of recordGroups" class="nav-item" (click)="changeFilter(group.id)">
+                    <a class="nav-link" matRipple [ngClass]="{'active accent-100':filterBy === group.id}">
+                        <div class="title text-truncate" matTooltip="{{group.name}}">{{group.name}}</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / SIDEBAR CONTENT -->

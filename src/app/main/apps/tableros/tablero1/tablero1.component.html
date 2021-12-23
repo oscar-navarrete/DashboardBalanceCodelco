@@ -1,0 +1,22 @@
+<div class="container white h-100-p w-100-p">
+    <app-dash-title title="Título del Tablero" icon="dashboard"></app-dash-title>    
+    <!-- Calendario -->
+    <mat-grid-list cols="6" rowHeight="80px">
+    <mat-grid-tile colspan="6">
+    <div fxLayout="row" style="width: 100% !important; ">
+        <div fxLayout="row" fxFlex="20" class="pt-30 pl-16 pr-8 py-16 h-52">
+            <mat-form-field style="width: 120px;">
+            <mat-label>Fecha</mat-label>
+            
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date" 
+            [formControl]="common.datePickerCtrl">
+
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+
+            </mat-form-field>
+        </div>
+     </div>
+    </mat-grid-tile>
+   </mat-grid-list>
+</div>    

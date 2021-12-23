@@ -1,0 +1,161 @@
+<mat-table #table [dataSource]="dataSource" [@animateStagger]="{value:'50'}">
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="checkbox">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let contact">
+            <mat-checkbox [(ngModel)]="checkboxes[contact.id]" (ngModelChange)="onSelectedChange(contact.id)" (click)="$event.stopPropagation()">
+            </mat-checkbox>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Avatar Column -->
+    <ng-container matColumnDef="avatar">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let contact">
+            <img class="avatar" *ngIf="contact.avatar" [alt]="contact.name" [src]="contact.avatar" />
+        </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+        <mat-cell *matCellDef="let contact" matTooltip="{{contact.name }} {{ contact.lastName }}">
+            <p class="text-truncate font-weight-400">{{contact.name}} {{contact.lastName}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-sm>Email</mat-header-cell>
+        <mat-cell *matCellDef="let contact" matTooltip="{{contact.email }}" fxHide fxShow.gt-sm>
+            <p class="text-truncate font-weight-300">
+                {{contact.email}}
+            </p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Phone Column -->
+    <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>Teléfono</mat-header-cell>
+        <mat-cell *matCellDef="let contact" matTooltip="{{contact.phone }}" fxHide fxShow.gt-md>
+            <p class="text-truncate font-weight-300">
+                {{contact.phone}}
+            </p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Job Title Column -->
+    <ng-container matColumnDef="jobTitle">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-lg>Cargo</mat-header-cell>
+        <mat-cell *matCellDef="let contact" matTooltip="{{contact.jobTitle }}" fxHide fxShow.gt-lg>
+            <p class="text-truncate font-weight-300">
+                {{contact.jobTitle}}
+            </p>
+        </mat-cell>
+    </ng-container>
+
+
+
+    <!-- Buttons Column -->
+    <ng-container matColumnDef="buttons">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let contact">
+            <div fxFlex="row" fxLayoutAlign="end center">
+                <button mat-icon-button (click)="$event.stopPropagation();toggleStar(contact.id)" aria-label="Toggle star">
+                    <mat-icon matTooltip="Usuario habilitado" class="light-green-900-fg" *ngIf="contact.enabled">verified_user</mat-icon>
+                    <mat-icon matTooltip="Usuario deshabilitado" class="red-900-fg" *ngIf="!contact.enabled">block</mat-icon>
+                </button>
+                <button mat-icon-button (click)="$event.stopPropagation();toggleStar(contact.id)" aria-label="Toggle star">
+                    <mat-icon matTooltip="Usuario no tiene ningún tipo de bloqueo."  class="light-green-900-fg" *ngIf="!contact.locked">lock_open</mat-icon>
+                    <mat-icon matTooltip="Usuario bloqueado" class="red-900-fg" *ngIf="contact.locked">lock</mat-icon>
+                </button>
+
+                <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More" (click)="$event.stopPropagation();">
+                    <mat-icon matTooltip="Haga click para ver todas las opciones disponibles en este usuario" class="secondary-text">more_vert</mat-icon>
+                </button>
+
+                <mat-menu #moreMenu="matMenu" class="accent-50">
+                    <button mat-menu-item aria-label="remove" [matMenuTriggerFor]="groupMenu">
+                        <mat-icon>group</mat-icon>
+                        <span>Grupos</span>
+                    </button>
+
+                    <mat-menu #groupMenu="matMenu" [overlapTrigger]="false" class="accent-50">
+
+                        <div fxFlex fxLayout="column" class="scrumboard-members-menu" (click)="$event.stopPropagation()">
+                            <div class="search-wrapper mt-16 mt-sm-0">
+                                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                                    <mat-icon class="search-icon">search</mat-icon>
+                                    <input [formControl]="searchInput" placeholder="Buscar un grupo">
+                                </div>
+                            </div>
+                            <mat-checkbox class="member px-16" *ngFor="let member of rolesUser" [checked]="checkUserGroup(contact, member)" (change)="actionGroup(member, contact, $event)">
+                                <div fxLayout="row" fxLayoutAlign="start center">
+                                    <mat-icon>group</mat-icon>
+                                    <p class="member-name">{{ member.name }}</p>
+                                </div>
+                            </mat-checkbox>
+                        </div>
+                    </mat-menu>
+
+
+                    <!-- <button mat-menu-item aria-label="remove" disabled *ngIf="contact.enabled === false || contact.locked === true" (click)="sendCredentials(contact)">
+                        <mat-icon>mail</mat-icon>
+                        <span>Notificar Credenciales</span>
+                    </button>
+                    <button mat-menu-item aria-label="remove" *ngIf="contact.enabled === true && contact.locked === false" (click)="sendCredentials(contact)">
+                        <mat-icon>mail</mat-icon>
+                        <span>Notificar Credenciales</span>
+                    </button> -->
+
+                    <button mat-menu-item aria-label="remove" disabled *ngIf="contact.enabled === false || contact.locked === true" (click)="openMessage(contact)">
+                        <mat-icon>send</mat-icon>
+                        <span>Enviar una Notificación</span>
+                    </button>
+                    <button mat-menu-item aria-label="remove" *ngIf="contact.enabled === true && contact.locked === false" (click)="openMessage(contact)">
+                        <mat-icon>send</mat-icon>
+                        <span>Enviar una Notificación</span>
+                    </button>
+
+
+
+                    <hr>
+
+                    <button mat-menu-item aria-label="remove" disabled (click)="enableDisableAccount(true, contact)" *ngIf="contact.enabled === false && contact.locked === true">
+                        <mat-icon>verified_user</mat-icon>
+                        <span >Habilitar</span>
+                    </button>
+
+                    <button mat-menu-item aria-label="remove" (click)="enableDisableAccount(true, contact)" *ngIf="contact.enabled === false && contact.locked === false">
+                        <mat-icon class="light-green-900-fg">verified_user</mat-icon>
+                        <span class="light-green-900-fg">Habilitar</span>
+                    </button>
+
+                    <button mat-menu-item aria-label="remove" (click)="enableDisableAccount(false, contact)" *ngIf="contact.enabled">
+                        <mat-icon class="red-900-fg">block</mat-icon>
+                        <span class="red-900-fg">Deshabilitar</span>
+                    </button>
+
+                    <button mat-menu-item aria-label="remove" (click)="lockUnlockAccount(true, contact)" *ngIf="!contact.locked">
+                        <mat-icon class="red-900-fg">lock</mat-icon>
+                        <span class="red-900-fg">Bloquear</span>
+                    </button>
+                    <button mat-menu-item aria-label="remove" (click)="lockUnlockAccount(false, contact)" *ngIf="contact.locked">
+                        <mat-icon class="light-green-900-fg">lock_open</mat-icon>
+                        <span class="light-green-900-fg">Desbloquear</span>
+                    </button>
+                    <hr>
+                    <button mat-menu-item aria-label="remove" (click)="deleteContact(contact)">
+                        <mat-icon class="red-900-fg">delete</mat-icon>
+                        <span class="red-900-fg">Eliminar</span>
+                    </button>
+                </mat-menu>
+            </div>
+
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let contact; columns: displayedColumns;" class="contact" (click)="editContact(contact)" [ngClass]="{'accent-50':checkboxes[contact.id]}" matRipple [@animate]="{value:'*',params:{y:'100%'}}">
+    </mat-row>
+</mat-table>

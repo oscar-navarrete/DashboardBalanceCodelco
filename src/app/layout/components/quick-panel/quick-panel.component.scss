@@ -1,0 +1,39 @@
+quick-panel {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 280px;
+    min-width: 280px;
+    max-width: 380px;
+    z-index: 99;
+    .mat-slide-toggle-content {
+        flex: 1;
+    }
+}
+
+.example-card {
+    max-width: 270px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+mat-card-subtitle {
+    font-weight: bold !important;
+}
+
+mat-card-title {
+    font-size: 16px !important;
+}
+
+.title {
+    font-size: 22px !important;
+}
+
+.time {
+    font-size: 11px !important;
+    font-weight: normal !important;
+}
+
+.okey {
+    font-size: 12px !important;
+}

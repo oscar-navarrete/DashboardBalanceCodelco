@@ -1,0 +1,76 @@
+<div class="container white h-300-p w-100-p">
+    <!-- <app-dash-title title="Monitoreo Balance DMH" icon="dashboard"></app-dash-title> -->
+    <div fxLayout="row" class="banner-column-vw">
+        <div fxFlex="10">
+            <img src="../../../../../../assets/images/avatars/logocodelco.png" alt="Logo Codelco"
+                class="banner-logo-corporativo">
+        </div>
+        <div fxFlex="90">
+            <div class="banner-barra-titulos-vw">
+                <span>KPI CORPORTIVO BALANCE METALÚRGICO</span><span class="subtitle" style="margin-left: 1100px;"> MES:
+                    {{ this.fechakpi | uppercase }} </span>
+            </div>
+        </div>
+    </div>
+
+    <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="row-master">
+        <div fxFlex="49" class="column-x row-master-col1 row100">
+            <div fxFlex="100" class="column-x row-master-col1 row100" style="background-color: #303030;padding:30px;">
+                <div style="background-color: #505050;width: 100%;height: 100%;padding: 70px;">
+                    <highcharts-chart *ngIf="nroejecuciones" [Highcharts]="highcharts" [options]="nroejecuciones"
+                        [(update)]="updateFlag">
+                    </highcharts-chart>
+                </div>
+            </div>
+        </div>
+        <div fxFlex="51" class="column-x row-master-col2 row100">
+            <div fxFlex="100" class="column-x row-master-col1 row100" style="background-color: #303030;padding:30px;">
+                <div style="background-color: #505050;width: 100%;height: 100%;padding: 70px;">
+                    <highcharts-chart *ngIf="sobreajuste" [Highcharts]="highcharts" [options]="sobreajuste"
+                        [(update)]="updateFlag">
+                    </highcharts-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="row-master">
+        <div fxFlex="49" class="column-x row-master-col1 row100">
+            <div fxLayout="row" class="column-x row-master-col1 row50"
+                style="background-color: #303030;padding:30px 30px 0px 30px;">
+                <div style="background-color: #505050;width: 100%;height: 98%;padding: 33px 70px;">
+                    <highcharts-chart *ngIf="incertidumbre" [Highcharts]="highcharts" [options]="incertidumbre"
+                        [(update)]="updateFlag" style="width: 100%;height: 100%; ">
+                    </highcharts-chart>
+                </div>
+            </div>
+            <div fxLayout="row" class="column-x row-master-col1 row50"
+                style="background-color: #303030;padding:0px 30px 30px 30px;">
+                <div style="background-color: #505050;width: 100%;height: 98%;padding: 33px 70px;">
+                    <highcharts-chart *ngIf="desbalancePorNodo" [Highcharts]="highcharts" [options]="desbalancePorNodo"
+                        [(update)]="updateFlag" style="width: 100%;height: 100%; ">
+                    </highcharts-chart>
+                </div>
+            </div>
+        </div>
+        <div fxFlex="51" class="column-x row-master-col1 row100">
+            <div fxLayout="row" class="column-x row-master-col1 row50"
+                style="background-color: #303030;padding:30px 30px 0px 30px;">
+                <div style="background-color: #505050;width: 100%;height: 98%;padding: 33px 70px;">
+                    <highcharts-chart *ngIf="desbalanceglobal" [Highcharts]="highcharts" [options]="desbalanceglobal"
+                        [(update)]="updateFlag" style="width: 100%;height: 100%; ">
+                    </highcharts-chart>
+                </div>
+            </div>
+            <div fxLayout="row" class="column-x row-master-col1 row50"
+                style="background-color: #303030;padding:0px 30px 30px 30px;">
+                <div style="background-color: #505050;width: 100%;height: 98%;padding: 33px 70px;">
+                    <highcharts-chart *ngIf="ajusteinventario" [Highcharts]="highcharts" [options]="ajusteinventario"
+                        [(update)]="updateFlag" style="width: 100%;height: 100%; ">
+                    </highcharts-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

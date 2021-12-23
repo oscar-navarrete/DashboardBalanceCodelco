@@ -1,0 +1,51 @@
+<div id="change-pwd" fxLayout="column">
+
+    <div id="change-pwd-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+        <div id="change-pwd-form" [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+
+            <div class="logo">
+                <img [src]="_authService.userImageUrl">
+            </div>
+
+            <div class="greetings">Hola {{ _authService.user.user_fullname }}</div>
+            <div class="title">Ingresa tus nuevas credenciales</div>
+
+            <form name="resetPasswordForm" [formGroup]="resetPasswordForm" novalidate>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password">
+                    <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
+                    <mat-error>
+                        Se requiere una nueva contraseña
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Password (Confirm)</mat-label>
+                    <input matInput type="password" formControlName="passwordConfirm">
+                    <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
+                    <mat-error *ngIf="resetPasswordForm.get('passwordConfirm').hasError('required')">
+                        Debe confirmar su contraseña
+                    </mat-error>
+                    <mat-error *ngIf="!resetPasswordForm.get('passwordConfirm').hasError('required') &&
+                                       resetPasswordForm.get('passwordConfirm').hasError('passwordsNotMatching')">
+                        Contraseñas no coinciden
+                    </mat-error>
+                </mat-form-field>
+
+                <button mat-raised-button class="submit-button" color="accent" aria-label="RESET MY PASSWORD" [disabled]="resetPasswordForm.invalid || sending" (click)="onChange()">
+                    CAMBIAR CONTRASEÑA
+                </button>
+            </form>
+
+            <div class="login" fxLayout="row" fxLayoutAlign="center center">
+                <a class="link" [routerLink]="'/pages/auth/login'">Volver al Login</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

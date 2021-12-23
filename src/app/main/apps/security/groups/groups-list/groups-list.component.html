@@ -1,0 +1,121 @@
+<mat-table #table [dataSource]="dataSource" [@animateStagger]="{value:'50'}">
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="checkbox">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let record">
+            <mat-checkbox [(ngModel)]="checkboxes[record.id]" (ngModelChange)="onSelectedChange(record.id)" (click)="$event.stopPropagation()">
+            </mat-checkbox>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+        <mat-cell *matCellDef="let record" matTooltip="{{record.name}}">
+            <p class="text-truncate font-weight-400">{{record.name}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>Descripción</mat-header-cell>
+        <mat-cell *matCellDef="let record" matTooltip="{{record.description}}" fxHide fxShow.gt-md>
+            <p class="text-truncate font-weight-300">
+                {{record.description}}
+            </p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Member Column -->
+    <ng-container matColumnDef="members">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>Miembros del Grupo</mat-header-cell>
+        <mat-cell *matCellDef="let record" fxHide fxShow.gt-md>
+
+
+            <!-- <img class="avatar" *ngFor="let member of getAvatarMember(record)" [src]="member.avatar" /> -->
+
+            <div class="avatar-icons">
+                <div *ngIf="getAvatarMember(record).length > countAvatars ; else elseBlock" class="avatar-icon">
+                    <span class="avatar-i" *ngFor="let member of getAvatarMember(record,countAvatars)" [matTooltip]="member.avatar.name">
+                    <img [src]="member.avatar.avatar"  >
+                  </span>
+                    <span class="avatar-count" *ngIf="getAvatarMember(record).length > countAvatars && countAvatars!==0">
+                    + {{getAvatarMember(record).length - countAvatars }}
+                  </span>
+                </div>
+                <ng-template #elseBlock>
+                    <span class="avatar-i" *ngFor="let member of getAvatarMember(record)" [matTooltip]="member.avatar.name">
+                    <img [src]="member.avatar.avatar"  [matTooltip]="member.avatar.name">
+                  </span>
+                </ng-template>
+            </div>
+
+
+        </mat-cell>
+    </ng-container>
+
+    <!-- Buttons Column -->
+    <ng-container matColumnDef="buttons">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let record">
+            <div fxFlex="row" fxLayoutAlign="end center">
+                <button mat-icon-button (click)="$event.stopPropagation();" aria-label="Toggle star">
+                    <mat-icon matTooltip="Grupo activo" class="light-green-900-fg" *ngIf="record.enabled">verified_user</mat-icon>
+                    <mat-icon matTooltip="Grupo inactivo" class="red-900-fg" *ngIf="!record.enabled">block</mat-icon>
+                </button>
+                <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More" (click)="$event.stopPropagation();">
+                    <mat-icon matTooltip="Haga click para ver todas las opciones disponibles en este grupo" class="secondary-text">more_vert</mat-icon>
+                </button>
+
+                <mat-menu #moreMenu="matMenu" class="accent-50">
+                    <button mat-menu-item aria-label="remove" [matMenuTriggerFor]="groupMenu">
+                        <mat-icon>group</mat-icon>
+                        <span>Miembros</span>
+                    </button>
+
+                    <mat-menu #groupMenu="matMenu" [overlapTrigger]="false" class="accent-50">
+
+                        <div fxFlex fxLayout="column" class="scrumboard-members-menu" (click)="$event.stopPropagation()">
+                            <div class="search-wrapper mt-16 mt-sm-0">
+                                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                                    <mat-icon class="search-icon">search</mat-icon>
+                                    <input [formControl]="searchInput" placeholder="Buscar un miembro">
+                                </div>
+                            </div>
+                            <div mat-menu-item *ngFor="let member of recordMembers" class="member px-16">
+                                <mat-checkbox [checked]="checkRecordMember(record, member)" (change)="actionGroup(member, record, $event)">
+                                    <div fxLayout="row" fxLayoutAlign="start center">
+                                        <img class="avatar_list" *ngIf="member.avatar" [alt]="member.name" [src]="member.avatar" />
+                                        <p class="member-name">{{ member.name }} {{ member.lastName }}</p>
+                                    </div>
+                                </mat-checkbox>
+
+                            </div>
+                        </div>
+                    </mat-menu>
+
+                    <hr>
+                    <button mat-menu-item aria-label="remove" (click)="enableDisable(true, record)" *ngIf="record.enabled === false">
+                        <mat-icon class="light-green-900-fg">verified_user</mat-icon>
+                        <span class="light-green-900-fg">Habilitar</span>
+                    </button>
+
+                    <button mat-menu-item aria-label="remove" (click)="enableDisable(false, record)" *ngIf="record.enabled === true">
+                        <mat-icon class="red-900-fg">block</mat-icon>
+                        <span class="red-900-fg">Deshabilitar</span>
+                    </button>
+
+                    <button mat-menu-item aria-label="remove" (click)="deleteRecord(record)">
+                        <mat-icon class="red-900-fg">delete</mat-icon>
+                        <span class="red-900-fg">Eliminar</span>
+                    </button>
+                </mat-menu>
+            </div>
+
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let record; columns: displayedColumns;" class="feature" (click)="editRecord(record)" [ngClass]="{'accent-50':checkboxes[record.id]}" matRipple [@animate]="{value:'*',params:{y:'100%'}}">
+    </mat-row>
+</mat-table>

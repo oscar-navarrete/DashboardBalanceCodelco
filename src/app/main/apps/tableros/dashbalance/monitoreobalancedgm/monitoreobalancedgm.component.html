@@ -1,0 +1,422 @@
+<div class="container white h-300-p w-100-p">
+    <!-- <app-dash-title title="Monitoreo Balance DMH" icon="dashboard"></app-dash-title> -->
+    <!-- <div fxLayout="row" class="banner-column">
+        <div fxFlex="50">
+             <img src="../../../../../../assets/images/logos/logoCodelco.png" alt="Logo Codelco"
+                class="banner-logo-corporativo"> 
+            <div class="banner-barra-titulos"><span>Portal Operacional Balance Metalúrgico</span></div>
+        </div>
+        <div fxFlex="50">
+            <div class="banner-barra-titulos">
+                <span class="subtitle-banner"> Monitoreo Balance DGM {{ this.mes | titlecase }}</span>
+            </div>
+        </div>
+    </div> -->
+    <div fxLayout="row" class="banner-column">
+        <div fxFlex="10">
+            <img class="logo-corporativo" src="../../../../../../assets/images/avatars/logocodelco.png"
+                alt="Logo Codelco" />
+        </div>
+        <div fxFlex="90">
+            <div class="banner-barra-titulos">
+                <span>MONITOREO BALANCE METALÚRGICO DGM</span><span class="subtitle-banner"> MES:
+                    {{ this.mes | uppercase }} </span>
+            </div>
+        </div>
+    </div>
+
+    <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+        <div fxFlex="60" class="column-x" style="margin: 7px 0px 7px 0px;">
+            <div fxLayout="column" style="margin: 7px 0px 7px 0px;">
+                <div class="cabecera-black"><label>CUMPLIMIENTO CALIDAD DATOS ENTRADA</label></div>
+                <div fxLayout="row">
+                    <div class="box-data-full" fxFlex="33" style="height: 325px;">
+                        <div fxLayout="row" class="box-data-child">
+                            <div class="box-chart-mod">
+                                <highcharts-chart *ngIf="grafmesanterior" [Highcharts]="highcharts"
+                                    [options]="grafmesanterior" [(update)]="updateFlag"
+                                    style="width: 100%; height: 100%; display: block;">
+                                </highcharts-chart>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-data-full" fxFlex="33" style="height: 325px;">
+                        <div fxLayout="row" class="box-data-child">
+                            <div class="box-chart-mod">
+                                <highcharts-chart *ngIf="grafmesactual" [Highcharts]="highcharts"
+                                    [options]="grafmesactual" [(update)]="updateFlag"
+                                    style="width: 100%; height: 100%; display: block;">
+                                </highcharts-chart>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-data-full" fxFlex="33" style="height: 325px; padding: 25px;">
+                        <div style="text-align: center;"><label style="color:white">ESTADO GENERAL</label><span
+                                class="subtitle2">POR
+                                ÁREA</span></div>
+                        <div fxLayout="row" class="box-data-child">
+                            <div fxFlex="100">
+                                <div fxLayout="column" fxFlex="50"
+                                    style="border-bottom: 3px solid #a7a6a6 !important;border-right: 3px solid #a7a6a6 !important;">
+                                    <div fxLayout="row" fxFlex="50" fxLayoutAlign="center center"
+                                        class="title-cuadrado">
+                                        ÁREA SECA</div>
+                                    <div fxLayout="row" fxFlex="50" fxLayoutAlign="center"
+                                        style="font-size: 12px; font-weight: bold;">
+                                        <img class="img-sem"
+                                            src='../../../../../assets/images/avatars/{{ this.areasdgm[0].Estado_General == 0 ? "verde.png": this.areasdgm[0].Estado_General > 0 ? "rojo.png": "plomo.png"}}'
+                                            alt="image" />
+                                    </div>
+                                </div>
+                                <div fxLayout="column" fxFlex="50" style="border-bottom: 3px solid #a7a6a6 !important">
+                                    <div fxLayout="row" fxFlex="50" fxLayoutAlign="center center"
+                                        class="title-cuadrado">
+                                        ÁREA HÚMEDA</div>
+                                    <div fxLayout="row" fxFlex="50" fxLayoutAlign="center"
+                                        style="font-size: 8px; font-weight: bold;">
+                                        <img class="img-sem"
+                                            src='../../../../../assets/images/avatars/{{ this.areasdgm[1].Estado_General == 0 ? "verde.png": this.areasdgm[1].Estado_General > 0 ? "rojo.png": "plomo.png" }}'
+                                            alt="image" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div fxLayout="row" class="box-data-child">
+                            <div fxFlex="100">
+                                <div fxLayout="column" fxFlex="50" style="border-right: 3px solid #a7a6a6 !important;">
+                                    <div fxLayout="row" fxFlex="50" fxLayoutAlign="center center"
+                                        class="title-cuadrado">
+                                        PATIO DE CÁTODOS</div>
+                                    <div fxLayout="row" fxFlex="50" fxLayoutAlign="center"
+                                        style="font-size: 10px; font-weight: bold;">
+                                        <img class="img-sem"
+                                            src='../../../../../assets/images/avatars/{{ this.areasdgm[2].Estado_General == 0 ? "verde.png": this.areasdgm[2].Estado_General > 0 ? "rojo.png": "plomo.png" }}'
+                                            alt="image" />
+                                    </div>
+                                </div>
+                                <!-- <div fxLayout="column" fxFlex="50">
+                                    <div fxLayout="row" fxFlex="50" fxLayoutAlign="center center"
+                                        class="title-cuadrado">
+                                        PLANTA ÁCIDO</div>
+                                    <div fxLayout="row" fxFlex="50" fxLayoutAlign="center"
+                                        style="font-size: 10px; font-weight: bold;">
+                                        <img src='../../../../../assets/images/img_new/green.PNG' alt="image"
+                                            class="img-good" />
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div fxFlex="40" class="column-x" style="margin: 7px 0px 7px 0px;">
+            <div fxLayout="column" style="margin: 7px 0px 7px 0px;">
+                <div class="cabecera-black"><label>AVANCE PROGRAMA CALIBRACIONES</label></div>
+                <div fxLayout="row">
+                    <div class="box-data-full" fxFlex="50%" style="height: 80px;">
+                        <div fxLayout="row" class="box-data-child" fxLayoutAlign="center center">
+                            <label style="color:white">AVANCE</label><span class="subtitle">
+                                MES</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-bottom"
+                                style="margin-top: 0px;">{{ this.calibraciones[2].Cantidad_Actual_Cumplimiento / 100|
+                                percent
+                                }}</span>
+                        </div>
+                    </div>
+                    <div class="box-data-full" fxFlex="50%" style="height: 80px;">
+                        <div fxLayout="row" class="box-data-child" fxLayoutAlign="center center"><label
+                                style="color:white">REAL</label>
+                            /<span class="subtitle">
+                                PROGRAMADO</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-bottom"
+                                style="margin-top: 0px;">
+                                {{
+                                this.calibraciones[2].Cantidad_Actual_Realizada }} / {{
+                                this.calibraciones[2].Cantidad_Actual_Programada }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div fxLayout="row" style="margin-top: 4px;">
+                    <div class="box-data-full" fxFlex="100%">
+                        <div class="box-chart">
+                            <highcharts-chart *ngIf="grafcalibraciondmh" [Highcharts]="highcharts"
+                                [options]="grafcalibraciondmh" [(update)]="updateFlag"
+                                style="width: 100%;height: 100%; display: block; ">
+                            </highcharts-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div fxLayout="row" class="box ">
+        <div fxFlex="100" class="column-x">
+            <div fxLayout="column">
+                <div class="cabecera-black"><label>EJECUCIÓN ETAPAS BALANCE METALURGICO</label></div>
+                <!-- <div fxLayout="row">
+                    <div class="box-data-balance" fxFlex="12.5%">
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-top">REVISION DATOS</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child"><span class="subtitle"> POR AREAS</span></div>
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-fecha"></span></div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <div fxLayout="row" class="box-etapas">
+
+        <!-- PRE BALANCE -->
+        <div class="box-child-1" fxFlex="15">
+            <!-- Title -->
+            <div fxLayout="row" class="childs-titles">
+                <div fxLayout="row" fxFlex="100">
+                    <div fxFlex="10"></div>
+                    <div fxFlex="80" fxLayoutAlign="center center" class="box-etapas-title"> <label>PRE</label><span
+                            class="subtitle">BALANCE</span></div>
+                    <div fxFlex="10"></div>
+                </div>
+            </div>
+            <!-- Contenido -->
+            <div fxLayout="column" class="box-data-full-mod">
+
+                <div fxLayout="row" class="row-1">
+                    <div fxFlex="100" class="img-icon" fxLayoutAlign="center center"><img class="img-sem"
+                            src='../../../../../assets/images/avatars/{{ this.valores[2].Estado_RevisaArea == 1 ? "verde.png":"rojo.png" }}'
+                            alt="image" /></div>
+                </div>
+
+                <div fxLayout="row" class="row-1">
+                    <div fxFlex="100" class="row-1" style="text-align:center">
+                        <label>REVISION DATOS </label><br>
+                        <label> POR AREAS</label><br>
+                        <label> SEGÚN ESTÁNDAR</label><br>
+                        <!--<label class="fecha">{{ this.FRevisaArea }}</label>-->
+                        <label class="fecha" *ngIf="this.valores[2].Fecha_RevisaArea != '-'; else sin_fecha">{{
+                            this.valores[2].Fecha_RevisaArea | date: 'dd-MM-yyyy HH:mm' }}</label>
+                        <ng-template #sin_fecha><label class="nofecha"> - </label>
+                        </ng-template>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <!-- SIGMAFINE -->
+        <div class="box-child-2" fxFlex="70">
+            <div fxLayout="row" class="childs-titles">
+                <div fxLayout="row" fxFlex="100">
+                    <div fxFlex="10"></div>
+                    <div fxFlex="80" fxLayoutAlign="center center" class="box-etapas-title"><label>EJECUCIÓN DE
+                            BALANCE</label>
+                    </div>
+                    <div fxFlex="10"></div>
+                </div>
+            </div>
+            <div fxLayout="column" class="box-data-full-mod">
+                <!-- Fila Semaforos-->
+                <div fxLayout="row" class="row-1">
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center"></div>
+                    <div fxFlex="16" class="img-icon" fxLayoutAlign="center center">
+                        <img class="img-sem"
+                            src='../../../../../assets/images/avatars/{{ this.valores[2].Estado_RevisaDatos == 1 ? "verde.png":"rojo.png" }}'
+                            alt="image" />
+                    </div>
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center"></div>
+                    <div fxFlex="16" class="img-icon" fxLayoutAlign="center center">
+                        <img class="img-sem"
+                            src='../../../../../assets/images/avatars/{{ this.valores[2].Estado_Escritorio_RecoleccionDatos == 1 ? "verde.png":"rojo.png" }}'
+                            alt="image" />
+                    </div>
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center"></div>
+                    <div fxFlex="16" class="img-icon" fxLayoutAlign="center center">
+                        <img class="img-sem"
+                            src='../../../../../assets/images/avatars/{{ this.valores[2].Estado_Escritorio_Entrada_General == 1 ? "verde.png":"rojo.png" }}'
+                            alt="image" />
+                    </div>
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center">
+                    </div>
+                    <div fxFlex="16" class="img-icon" fxLayoutAlign="center center">
+                        <img class="img-sem"
+                            src='../../../../../assets/images/avatars/{{ this.valores[2].Estado_Escritorio_Ejecucion == 1 ? "verde.png":"rojo.png" }}'
+                            alt="image" />
+                    </div>
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center">
+                    </div>
+                    <div fxFlex="16" class="img-icon" fxLayoutAlign="center center">
+                        <img class="img-sem"
+                            src='../../../../../assets/images/avatars/{{ this.valores[2].Estado_Escritorio_Salida_General == 1 ? "verde.png":"rojo.png" }}'
+                            alt="image" />
+                    </div>
+                </div>
+                <!-- Fila Flechas + Info -->
+                <div fxLayout="row" class="row-1">
+
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center"><img class="img-sem"
+                            src="../../../../../assets/images/avatars/flecha.png" />
+                    </div>
+
+                    <div fxFlex="16" class="row-1" style="text-align:center">
+                        <label>REVISION DATOS</label><br>
+                        <label>ENTRADA A BALANCE</label><br>
+                        <label> SEGÚN ESTÁNDAR</label><br>
+                        <label class="fecha" *ngIf="valores[2].Fecha_RevisaDatos != '-'; else sin_fecha">{{
+                            valores[2].Fecha_RevisaDatos | date: 'dd-MM-yyyy HH:mm'}}</label>
+                        <ng-template #sin_fecha><label class="nofecha"> - </label>
+                        </ng-template>
+                    </div>
+
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center"><img class="img-sem"
+                            src="../../../../../assets/images/avatars/flecha.png" />
+                    </div>
+
+                    <div fxFlex="16" class="row-1" style="text-align:center">
+                        <label>RECOLECCION </label><br>
+                        <label>DATOS</label><br>
+                        <label class="fecha"
+                            *ngIf="valores[2].Fecha_Escritorio_RecoleccionDatos != '-'; else sin_fecha">{{
+                            valores[2].Fecha_Escritorio_RecoleccionDatos | date: 'dd-MM-yyyy HH:mm' }}</label>
+                        <ng-template #sin_fecha><label class="nofecha"> - </label>
+                        </ng-template>
+                    </div>
+
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center"><img class="img-sem"
+                            src="../../../../../assets/images/avatars/flecha.png" />
+                    </div>
+                    <div fxFlex="16" class="row-1" style="text-align:center">
+                        <label>REVISION </label><br>
+                        <label>DATOS DE ENTRADAS</label>
+                    </div>
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center">
+                        <img class="img-sem" src="../../../../../assets/images/avatars/flecha.png" />
+                    </div>
+                    <div fxFlex="16" class="row-1" style="text-align:center">
+                        <label>EJECUCIÓN </label><br>
+                        <label>BALANCES</label><br>
+                        <label class="fecha" *ngIf="valores[2].Fecha_Escritorio_Ejecucion != '-'; else sin_fecha">{{
+                            valores[2].Fecha_Escritorio_Ejecucion | date: 'dd-MM-yyyy HH:mm' }}</label>
+                        <ng-template #sin_fecha><label class="nofecha"> - </label>
+                        </ng-template>
+                    </div>
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center">
+                        <img class="img-sem" src="../../../../../assets/images/avatars/flecha.png" />
+                    </div>
+                    <div fxFlex="16" class="row-1" style="text-align:center">
+                        <label>REVISIÓN </label><br>
+                        <label>DATOS DE SALIDA</label>
+                    </div>
+                </div>
+                <!-- Fila Sem + Info -->
+                <div fxLayout="row" class="row-1">
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center">
+                    </div>
+                    <div fxFlex="16" class="row-1">
+                    </div>
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center">
+                    </div>
+                    <div fxFlex="16" class="row-1">
+                    </div>
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center" style="margin-top: 10px !important;">
+                        <img class="img-sem"
+                            src='../../../../../assets/images/avatars/{{ this.valores[2].Estado_Escritorio_Entrada_Desviacion == 1 ? "verde.png":"rojo.png" }}'
+                            alt="image" />
+                    </div>
+                    <div fxFlex="16" class="row-1" style="text-align:center; margin-top: 10px !important;">
+                        <label>REVISIÓN</label><br>
+                        <label> DESVIACIONES</label>
+                    </div>
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center">
+                    </div>
+                    <div fxFlex="16" class="row-1">
+                    </div>
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center" style="margin-top: 10px !important;">
+                        <img class="img-sem"
+                            src='../../../../../assets/images/avatars/{{ this.valores[2].Estado_Escritorio_Salida_Desviacion == 1 ? "verde.png":"rojo.png" }}'
+                            alt="image" />
+                    </div>
+                    <div fxFlex="16" class="row-1" style="text-align:center; margin-top: 10px !important;">
+                        <label>REVISIÓN</label><br>
+                        <label> DESVIACIONES</label>
+                    </div>
+                </div>
+                <!-- Fila Sem + Info -->
+                <div fxLayout="row" class="row-1">
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center">
+                    </div>
+                    <div fxFlex="16" class="row-1">
+                    </div>
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center">
+                    </div>
+                    <div fxFlex="16" class="row-1">
+                    </div>
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center" style="margin-top: 10px !important;">
+                        <img class="img-sem"
+                            src='../../../../../assets/images/avatars/{{ this.valores[2].Estado_Escritorio_Entrada_Desbalance == 1 ? "verde.png":"rojo.png" }}'
+                            alt="image" />
+                    </div>
+                    <div fxFlex="16" class="row-1" style="text-align:center; margin-top: 10px !important;">
+                        <label>REVISION DESBALANCES</label>
+                    </div>
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center">
+                    </div>
+                    <div fxFlex="16" class="row-1">
+                    </div>
+                    <div fxFlex="4" class="img-icon" fxLayoutAlign="center center" style="margin-top: 10px !important;">
+                        <img class="img-sem"
+                            src='../../../../../assets/images/avatars/{{ this.valores[2].Estado_Escritorio_Salida_Desbalance == 1 ? "verde.png":"rojo.png" }}'
+                            alt="image" />
+                    </div>
+                    <div fxFlex="16" class="row-1" style="text-align:center; margin-top: 10px !important;">
+                        <label>REVISION DESBALANCES</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- POST BALANCE -->
+        <div class="box-child-3" fxFlex="15">
+            <div fxLayout="row" class="childs-titles">
+                <div fxLayout="row" fxFlex="100">
+                    <div fxFlex="10"></div>
+                    <div fxFlex="80" fxLayoutAlign="center center" class="box-etapas-title"> <label>POST</label><span
+                            class="subtitle"> BALANCE</span></div>
+                    <div fxFlex="10"></div>
+
+                </div>
+            </div>
+            <div fxLayout="column" class="box-data-full-mod">
+                <div fxLayout="row" class="row-1">
+                    <div fxFlex="20" class="img-icon" fxLayoutAlign="center center"></div>
+
+                    <div fxFlex="80" class="img-icon"><img class="img-sem"
+                            src='../../../../../assets/images/avatars/{{ this.valores[2].Estado_Escritorio_RevisaResultado == 1 ? "verde.png":"rojo.png" }}'
+                            alt="image" /></div>
+                </div>
+                <div fxLayout="row" class="row-1">
+                    <div fxFlex="20" class="img-icon" fxLayoutAlign="center center"><img class="img-sem"
+                            src="../../../../../assets/images/avatars/flecha.png" /></div>
+                    <div fxFlex="80" class="row-1" style="text-align:center">
+                        <label>VALIDACIÓN </label><br>
+                        <label>Y PUBLICACIÓN</label><br>
+                        <label class="fecha" *ngIf="valores[2].Fecha_RevisaResultado != '-'; else sin_fecha">{{
+                            valores[2].Fecha_RevisaResultado | date: 'dd-MM-yyyy HH:mm' }}</label>
+                        <ng-template #sin_fecha><label class="nofecha"> - </label>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

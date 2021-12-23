@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content color="primary">
+    <p>{{data.message}}</p>
+</div>
+<div mat-dialog-actions>
+    <button *ngFor="let opt of data.options" mat-raised-button [color]="opt.color" style="margin: 8px !important" (click)="terminate(opt.value)">
+            <mat-icon *ngIf="opt.icon" class="white-100-fg" >{{opt.icon}}</mat-icon>
+            <!-- &nbsp;{{opt.text}} -->
+            <span class="secondary-text" class="white-100-fg">&nbsp;{{opt.text}}</span>
+        </button>
+    <!-- <button mat-button cdkFocusInitial (click)="onOk()">Ok</button> -->
+</div>

@@ -1,0 +1,88 @@
+@import "../../tableros.theme.scss";
+
+.example-card {
+    max-width: 250px;
+  }
+
+.footer-card{
+  max-width: auto;
+  text-align: center;
+  text-justify: auto;
+  font-size: small;
+}
+
+.subtitle{
+  color: white;
+  font-size: 65px;
+  font-weight: bold;
+  font-style: italic;
+  margin-left: 200px;
+}
+
+.mat-card-header{
+  background-color:cadetblue !important;
+  padding:5px !important;
+}
+
+ .mat-card{
+  margin-top: 20px !important;
+  padding:5px !important;
+}
+
+.mat-card-content{
+  padding:5px !important;
+}
+
+.mat-card-footer{
+   padding: 5px !important;
+   text-align: center !important;
+   font-size: small !important;
+}
+
+
+.row-master{
+  height: 900px;
+}
+.column-x {
+  border-radius: 5px;
+  background-color: transparent;
+  /* margin: 7px;
+  padding: 2px; */
+}
+
+.banner-barra-titulos-vw> span{
+  font-size: 65px;
+  font-style: italic;
+}
+
+.banner-barra-titulos-vw{
+  margin-left: 40px;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 25px;
+}
+
+.row100{
+  height:100%;
+}
+.row90{
+  height:90%;
+}
+.row95{
+  height:95%;
+}
+.row50{
+  height:50%;
+}
+.row45{
+  height:45%;
+}
+.row35{
+  height:35%;
+}
+.row10{
+  height:10%;
+}
+.row5{
+  height:5%;
+}

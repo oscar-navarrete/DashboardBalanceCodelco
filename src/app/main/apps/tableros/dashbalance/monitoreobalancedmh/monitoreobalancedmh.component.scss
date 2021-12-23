@@ -1,0 +1,222 @@
+@import "../../tableros.theme.scss";
+
+.column-x {
+  border-radius: 5px;
+  background-color: transparent;
+  margin: 7px 0px 7px 0px;
+  padding: 2px;
+}
+
+.row-x {
+  margin-top: 5px;
+}
+
+.titulo {
+  display: grid;
+  place-items: center;
+}
+
+.img-icon {
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 25px;
+}
+
+// .img-good {
+//   width: 35px;
+//   height: 25px;
+//   margin-top: 13px;
+//   margin-right: 20px;
+// }
+
+.box-data {
+  background-color: #303030;
+  // box-shadow: 1px 1px 10px rgb(197, 196, 196);
+  border-radius: 3px;
+  width: 100%;
+  height: 193px;
+  margin: 0px 5px 5px 5px;
+}
+
+.subtitle {
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0px 5px 0px 5px;
+}
+
+.subtitle2 {
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0px 0px 0px 0px;
+}
+
+.subtitle-banner {
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  font-style: italic;
+  margin-left: 200px;
+}
+
+.row-1{
+  width: 100%;
+  height: 45px;
+  margin-bottom: 10px;
+}
+
+.box-data-full-mod {
+  background-color: transparent;
+  //box-shadow: 1px 1px 10px rgb(197, 196, 196);
+  border-radius: 3px;
+  width: 100%;
+  height: auto;
+  margin: 0px 5px 0px 5px;
+}
+
+.box-data-full {
+  background-color: #303030;
+  // box-shadow: 1px 1px 10px rgb(197, 196, 196);
+  border-radius: 3px;
+  width: 100%;
+  height: auto;
+  margin: 0px 5px 0px 5px;
+}
+
+.box-data-balance {
+  background-color: #303030;
+  // box-shadow: 1px 1px 10px rgb(197, 196, 196);
+  border-radius: 3px;
+  width: 100%;
+  height: 90px;
+  margin: 0px 5px 5px 5px;
+}
+
+.cabecera-black {
+  background-color: transparent;
+  border-radius: 10px 10px 0px 0px;
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.cabecera-black> label{
+  font-size: 20px;
+}
+
+.box-data-child {
+  background-color: #303030;
+  width: 100%;
+  display: flex;
+  height: 50%;
+}
+
+.box-chart {
+  width: 100%;
+  height: 232px;
+  margin: 5px;
+}
+
+.box-chart-mod {
+  width: 100%;
+  height: 315px;
+  margin: 5px;
+}
+
+.title-cuadrado{
+  font-size: 10px; font-weight: bold; margin-top: 8px;
+  font-weight: bold;
+}
+
+.card-label-top {
+  color: dimgray;
+  font-size: 12px;
+  font-weight: bold;
+  margin: auto;
+  margin-top: 8px;
+}
+
+.card-label-bottom {
+  color: white;
+  margin: auto;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.card-label-center {
+  margin: auto;
+  margin-top: 13px;
+}
+
+.fecha{
+  margin-top: 8px;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.nofecha{
+  margin-top: 8px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+label {
+  font-size: 12px;
+  color: white;
+  font-weight: bold;
+}
+
+.box-etapas{
+  //border-top: 3px solid #979696 !important;
+  background-color: #303030;
+}
+.box-etapas-title{
+  border-bottom: 3px solid white !important;
+}
+
+.box-etapas-title> label{
+  margin-bottom: 20px;
+  padding-top: 15px;  
+}
+.box-etapas-title> span{
+  margin-bottom: 20px;
+  padding-top: 15px;
+}
+.childs-titles{
+  margin-bottom: 30px;
+}
+.box-child-1{
+  height: auto;
+  padding: 0px 15px;
+}
+.box-child-2{
+  height: auto;
+  border-left: 3px solid #979696 !important;
+  border-right: 3px solid #979696 !important;
+  padding: 0px 15px;
+}
+.box-child-3{
+  height: auto;  
+  padding: 0px 15px;
+}
+
+.img-sem{
+  height: 25px !important;
+}
+
+// img{
+//   height: 25px !important;
+// }
+
+.logo-corporativo{
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+  width: 55px !important;
+  height: 100% !important;
+}

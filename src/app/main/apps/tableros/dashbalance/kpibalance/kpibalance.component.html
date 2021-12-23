@@ -1,0 +1,101 @@
+<div class="container white h-300-p w-100-p">
+    <!-- <app-dash-title title="Monitoreo Balance DMH" icon="dashboard"></app-dash-title> -->
+    <!-- <div fxLayout="row" class="banner-column">
+        <div fxFlex="10">
+            <img src="../../../../../../assets/images/logos/logoCodelco.png" alt="Logo Codelco"
+                class="banner-logo-corporativo"> 
+        </div>
+        <div fxFlex="90">
+            <div class="banner-barra-titulos">
+                <span>Portal Operacional Balance Metalúrgico</span><span class="subtitle"> KPI Balance
+                    Corporativo {{ this.fechakpi }} </span>
+            </div>
+        </div>
+    </div> -->
+    <div fxLayout="row" class="banner-column">
+        <div fxFlex="10">
+            <img class="logo-corporativo" src="../../../../../../assets/images/avatars/logocodelco.png"
+                alt="Logo Codelco" />
+        </div>
+        <div fxFlex="90">
+            <div class="banner-barra-titulos">
+                <span>KPI CORPORATIVO BALANCE </span><span class="subtitle-banner"> MES:
+                    {{ this.fechakpi | uppercase }} </span>
+            </div>
+        </div>
+    </div>
+
+
+    <mat-grid-list cols="3" rowHeight="280px">
+        <mat-grid-tile>
+            <fuse-widget class="w-100-p" fxLayout="column">
+                <div class="fuse-widget-front mat-elevation-z2"
+                    style="width: 100% !important; background-color: #303030;">
+                    <highcharts-chart *ngIf="desbalancePorNodo" [Highcharts]="highcharts" [options]="desbalancePorNodo"
+                        [(update)]="updateFlag" style="width: 100%;height: 250px; ">
+                    </highcharts-chart>
+                </div>
+            </fuse-widget>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <fuse-widget class="w-100-p" fxLayout="column">
+                <div class="fuse-widget-front mat-elevation-z2"
+                    style="width: 100% !important; background-color: #303030;">
+                    <highcharts-chart *ngIf="desbalanceglobal" [Highcharts]="highcharts" [options]="desbalanceglobal"
+                        [(update)]="updateFlag" style="width: 100%;height: 250px; ">
+                    </highcharts-chart>
+                </div>
+            </fuse-widget>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <fuse-widget class="w-100-p" fxLayout="column">
+                <div class="fuse-widget-front mat-elevation-z2"
+                    style="width: 100% !important; background-color: #303030;">
+                    <highcharts-chart *ngIf="incertidumbre" [Highcharts]="highcharts" [options]="incertidumbre"
+                        [(update)]="updateFlag" style="width: 100%;height: 250px; ">
+                    </highcharts-chart>
+                </div>
+            </fuse-widget>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <fuse-widget class="w-100-p" fxLayout="column">
+                <div class="fuse-widget-front mat-elevation-z2"
+                    style="width: 100% !important; background-color: #303030;">
+                    <highcharts-chart *ngIf="nroejecuciones" [Highcharts]="highcharts" [options]="nroejecuciones"
+                        [(update)]="updateFlag" style="width: 100%;height: 250px; ">
+                    </highcharts-chart>
+                </div>
+            </fuse-widget>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile>
+            <fuse-widget class="w-100-p" fxLayout="column">
+                <div class="fuse-widget-front mat-elevation-z2"
+                    style="width: 100% !important; background-color: #303030;">
+                    <highcharts-chart *ngIf="sobreajuste" [Highcharts]="highcharts" [options]="sobreajuste"
+                        [(update)]="updateFlag" style="width: 100%;height: 250px; ">
+                    </highcharts-chart>
+                </div>
+            </fuse-widget>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile>
+            <fuse-widget class="w-100-p" fxLayout="column">
+                <div class="fuse-widget-front mat-elevation-z2"
+                    style="width: 100% !important; background-color: #303030;">
+                    <highcharts-chart *ngIf="ajusteinventario" [Highcharts]="highcharts" [options]="ajusteinventario"
+                        [(update)]="updateFlag" style="width: 100%;height: 250px; ">
+                    </highcharts-chart>
+                </div>
+            </fuse-widget>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+
+
+</div>

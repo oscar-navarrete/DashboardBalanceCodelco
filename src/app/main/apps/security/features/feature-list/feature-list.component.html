@@ -1,0 +1,130 @@
+<mat-table #table [dataSource]="dataSource" [@animateStagger]="{value:'50'}">
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="checkbox">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let record">
+            <mat-checkbox [(ngModel)]="checkboxes[record.id]" (ngModelChange)="onSelectedChange(record.id)" (click)="$event.stopPropagation()">
+            </mat-checkbox>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Icon Column -->
+    <ng-container matColumnDef="icon">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let record">
+            <mat-icon class="accent-900-fg">{{record.icon}}</mat-icon>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+        <mat-cell *matCellDef="let record">
+            <p class="text-truncate font-weight-400">{{record.name}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
+        <mat-cell *matCellDef="let record">
+            <p class="text-truncate font-weight-400">{{record.title}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Route Column -->
+    <ng-container matColumnDef="route">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-sm>Ruta</mat-header-cell>
+        <mat-cell *matCellDef="let record" fxHide fxShow.gt-sm>
+            <p class="text-truncate font-weight-300">
+                {{record.route}}
+            </p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- System Column -->
+    <!-- <ng-container matColumnDef="systemName">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-sm>Sistema</mat-header-cell>
+        <mat-cell *matCellDef="let record" fxHide fxShow.gt-sm>
+            <p class="text-truncate font-weight-600">
+                {{record.systemName}}
+            </p>
+        </mat-cell>
+    </ng-container> -->
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>Descripción</mat-header-cell>
+        <mat-cell *matCellDef="let record" fxHide fxShow.gt-md>
+            <p class="text-truncate font-weight-300">
+                {{record.description}}
+            </p>
+        </mat-cell>
+    </ng-container>
+
+
+    <!-- Buttons Column -->
+    <ng-container matColumnDef="buttons">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let record">
+            <div fxFlex="row" fxLayoutAlign="end center">
+                <button mat-icon-button (click)="$event.stopPropagation();" aria-label="Toggle star">
+                    <mat-icon matTooltip="Característica habilitada" class="light-green-900-fg" *ngIf="record.enabled">verified_user</mat-icon>
+                    <mat-icon matTooltip="Característica Deshabilitado" class="red-900-fg" *ngIf="!record.enabled">block</mat-icon>
+                </button>
+                <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More" (click)="$event.stopPropagation();">
+                    <mat-icon matTooltip="Haga click para ver todas las opciones disponibles en este usuario" class="secondary-text">more_vert</mat-icon>
+                </button>
+
+                <mat-menu #moreMenu="matMenu" class="accent-50">
+                    <button mat-menu-item aria-label="remove" [matMenuTriggerFor]="groupMenu">
+                        <mat-icon>group</mat-icon>
+                        <span>Grupos</span>
+                    </button>
+
+                    <mat-menu #groupMenu="matMenu" [overlapTrigger]="false" class="accent-50">
+
+                        <div fxFlex fxLayout="column" class="scrumboard-members-menu" (click)="$event.stopPropagation()">
+                            <div class="search-wrapper mt-16 mt-sm-0">
+                                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                                    <mat-icon class="search-icon">search</mat-icon>
+                                    <input [formControl]="searchInput" placeholder="Buscar un grupo">
+                                </div>
+                            </div>
+                            <div mat-menu-item *ngFor="let member of recordGroups" class="member px-16">
+                                <mat-checkbox [checked]="checkRecordGroup(record, member)" (change)="actionGroup(member, record, $event)">
+                                    <div fxLayout="row" fxLayoutAlign="start center">
+                                        <!-- <mat-icon>group</mat-icon> -->
+                                        <p class="member-name">{{ member.name }}</p>
+                                    </div>
+                                </mat-checkbox>
+                            </div>
+
+                        </div>
+                    </mat-menu>
+
+                    <hr>
+                    <button mat-menu-item aria-label="remove" (click)="enableDisable(true, record)" *ngIf="record.enabled === false">
+                        <mat-icon class="light-green-900-fg">verified_user</mat-icon>
+                        <span class="light-green-900-fg">Habilitar</span>
+                    </button>
+
+                    <button mat-menu-item aria-label="remove" (click)="enableDisable(false, record)" *ngIf="record.enabled === true">
+                        <mat-icon class="red-900-fg">block</mat-icon>
+                        <span class="red-900-fg">Deshabilitar</span>
+                    </button>
+
+                    <button mat-menu-item aria-label="remove" (click)="deleteRecord(record)">
+                        <mat-icon class="red-900-fg">delete</mat-icon>
+                        <span class="red-900-fg">Eliminar</span>
+                    </button>
+                </mat-menu>
+            </div>
+
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let record; columns: displayedColumns;" class="feature" (click)="editRecord(record)" [ngClass]="{'accent-50':checkboxes[record.id]}" matRipple [@animate]="{value:'*',params:{y:'100%'}}">
+    </mat-row>
+</mat-table>

@@ -1,0 +1,143 @@
+<div class="container white h-100-p w-100-p">
+    <app-dash-title title="INDICADORES DE GESTIÓN GEL SX-EW" icon="home"></app-dash-title>
+
+    <!-- Calendario -->
+    <mat-grid-list cols="6" rowHeight="80px">
+        <mat-grid-tile colspan="6">
+            <div fxLayout="row" style="width: 100% !important; ">
+                <div fxLayout="row" fxFlex="20" class="pt-30 pl-16 pr-8 py-16 h-52">
+                    <mat-form-field style="width: 120px;">
+                        <mat-label>Fecha</mat-label>
+                        <input matInput [matDatepicker]="picker" placeholder="Choose a date"
+                            [formControl]="common.datePickerCtrl">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field class="pl-16 w-200">
+                        <mat-label>Turno</mat-label>
+                        <mat-select [(value)]="tipoObjeto" (selectionChange)="cambiarTipo()">
+                            <mat-option *ngFor="let opcion of opcionesFiltro" [value]="opcion.value">{{opcion.text}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <!-- <mat-grid-tile *ngIf="tendenciaNivelHT">
+        <fuse-widget class="w-100-p" fxLayout="column" style="padding-top: 0px !important;">
+            <div class="fuse-widget-front mat-elevation-z2" style="width: 100% !important;">
+                <highcharts-chart [Highcharts]="highcharts" [options]="tendenciaNivelHT" [(update)]="updateFlag"
+                    style="width: 100%; height: 280px; ">
+                </highcharts-chart>
+            </div>
+        </fuse-widget>
+    </mat-grid-tile> -->
+
+    <mat-grid-list [cols]="2" rowHeight="610px">
+
+        <mat-grid-tile *ngIf="flujosTren">
+            <fuse-widget class="w-100-p" fxLayout="column">
+                <div class="fuse-widget-front mat-elevation-z2" style="width: 100% !important;">
+                    <highcharts-chart [Highcharts]="highcharts" [options]="flujosTren" [(update)]="updateFlag"
+                        style="width: 100%; height: 280px; ">
+                    </highcharts-chart>
+                </div>
+            </fuse-widget>
+        </mat-grid-tile>
+
+        <mat-grid-tile *ngIf="tendenciaNivelHT">
+            <fuse-widget class="w-100-p" fxLayout="column" style="padding-top: 3px !important;">
+                <div class="fuse-widget-front mat-elevation-z2" style="width: 100% !important;">
+                    <highcharts-chart [Highcharts]="highcharts" [options]="tendenciaNivelHT" [(update)]="updateFlag"
+                        style="width: 100%; height: 280px; ">
+                    </highcharts-chart>
+                </div>
+            </fuse-widget>
+        </mat-grid-tile>
+
+
+
+
+        <!-- <mat-grid-tile>
+            <fuse-widget class="w-100-p" fxLayout="column" *ngIf="tendenciaNivelHT"
+                style="padding-top: 0px !important;">
+                <div class="fuse-widget-front mat-elevation-z2" style="width: 100% !important">
+                    <highcharts-chart [Highcharts]="highcharts" [options]="tendenciaNivelHT" [(update)]="updateFlag"
+                        style="width: 380px; height: 280px;"></highcharts-chart>
+                </div>
+            </fuse-widget>
+        </mat-grid-tile> -->
+
+        <!-- <mat-grid-tile>
+            <fuse-widget class="w-100-p" fxLayout="column" *ngIf="flujosTren" style="padding-top: 0px !important;">
+                <div class="fuse-widget-front mat-elevation-z2" style="width: 100% !important">
+                    <highcharts-chart [Highcharts]="highcharts" [options]="flujosTren" [(update)]="updateFlag"
+                        style="width: 380px; height: 280px;"></highcharts-chart>
+                </div>
+            </fuse-widget>
+        </mat-grid-tile> -->
+
+    </mat-grid-list>
+
+
+
+
+
+
+    <!-- <div fxLayout="row">
+        <div fxLayoutGap="10px" fxFlex="40">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Ton. - A0</mat-card-title>
+                </mat-card-header>
+                <h3>{{datos | number:'1.0-0'}}</h3>
+            </mat-card>
+        </div>
+        <div fxLayoutGap="10px" fxFlex="40">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Ton. - A1</mat-card-title>
+                </mat-card-header>
+                <h3>{{1354 | number:'1.0-0'}}</h3>
+            </mat-card>
+        </div>
+        <div fxLayoutGap="10px" fxFlex="33">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Ton. - A2</mat-card-title>
+                </mat-card-header>
+                <h3>{{4122 | number:'1.0-0'}}</h3>
+            </mat-card>
+        </div>
+    </div>
+
+
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Planta</th>
+            <td mat-cell *matCellDef="let element"> {{element.indicador}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ton">
+            <th mat-header-cell *matHeaderCellDef> Ton/Pta. </th>
+            <td mat-cell *matCellDef="let element"> {{element.ton | number:'1.0-0'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="potencia">
+            <th mat-header-cell *matHeaderCellDef> Potencia (Kw) </th>
+            <td mat-cell *matCellDef="let element"> {{element.potencia | number:'1.0-0'}} </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+-->
+
+
+</div>

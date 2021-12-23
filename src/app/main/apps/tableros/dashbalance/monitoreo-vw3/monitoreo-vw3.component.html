@@ -1,0 +1,420 @@
+<div class="container white h-300-p w-100-p">
+
+    <div fxLayout="row" class="banner-column-vw">
+        <div fxFlex="10">
+            <img src="../../../../../../assets/images/avatars/logocodelco.png" alt="Logo Codelco"
+                class="banner-logo-corporativo">
+        </div>
+        <div fxFlex="90">
+            <div class="banner-barra-titulos-vw">
+                <span>MONITOREO BALANCE METALÚRGICO</span><span class="subtitle-banner" style="margin-left: 800px;">
+                    MES:
+                    {{ this.mes | uppercase }} </span>
+            </div>
+        </div>
+    </div>
+
+    <!--  <mdb-carousel [animation]="'slide'">
+        <mdb-carousel-item>
+          <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg" alt="First slide">
+        </mdb-carousel-item>
+        <mdb-carousel-item>
+          <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">
+        </mdb-carousel-item>
+        <mdb-carousel-item>
+          <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">
+        </mdb-carousel-item>
+    </mdb-carousel> -->
+
+    <!-- Codigo de Prueba -->
+    <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="row-master">
+
+        <div fxFlex="49" class="column-x row-master-col1" style="padding-bottom:20px;">
+            <div fxLayout="column" class="row100">
+                <div class="cabecera-black row5"><label>DIAGRAMA PROCESO BALANCE METALURGICO</label>
+                </div>
+                <div fxLayout="row" class="row100" style="padding-right:10px;">
+                    <div fxFlex="100" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" class="box-data-full row90">
+                        <!-- <div class="box-chart">
+                                <highcharts-chart *ngIf="DCH" [Highcharts]="highcharts" [options]="DCH" [(update)]="updateFlag"
+                                    style="width: 100%; height: 100%; display: block;"></highcharts-chart>
+                            </div> -->
+                        <img src="'../../../../../assets/images/new-adds/diagrama01.PNG" alt="image"
+                            style="width: 100%;height:100%;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div fxFlex="51" class="column-x row-master-col2">
+            <div fxLayout="column" class="row100">
+                <div class="cabecera-black row5"><label>CUMPLIMIENTO CALIDAD DATOS
+                        ENTRADA</label>
+                </div>
+                <div fxLayout="row" class="row45" style="padding-right:10px;">
+                    <div fxFlex="25" fxFlex.md="50" fxFlex.sm="50" fxFlex.xs="100" class="box-data-full row95">
+                        <div class="box-chart">
+                            <highcharts-chart *ngIf="DCH" [Highcharts]="highcharts" [options]="DCH"
+                                [(update)]="updateFlag" style="width: 100%; height: 100%; display: block;">
+                            </highcharts-chart>
+                        </div>
+                    </div>
+                    <div fxFlex="25" fxFlex.md="50" fxFlex.sm="50" fxFlex.xs="100" class="box-data-full row95">
+                        <div class="box-chart">
+                            <highcharts-chart *ngIf="DRT" [Highcharts]="highcharts" [options]="DRT"
+                                [(update)]="updateFlag" style="width: 100%; height: 100%; display: block;">
+                            </highcharts-chart>
+                        </div>
+                    </div>
+                    <div fxFlex="25" fxFlex.md="50" fxFlex.sm="50" fxFlex.xs="100" class="box-data-full row95">
+                        <div class="box-chart">
+                            <highcharts-chart *ngIf="DMH" [Highcharts]="highcharts" [options]="DMH"
+                                [(update)]="updateFlag" style="width: 100%; height: 100%; display: block;">
+                            </highcharts-chart>
+                        </div>
+                    </div>
+                    <div fxFlex="25" fxFlex.md="50" fxFlex.sm="50" fxFlex.xs="100" class="box-data-full row95">
+                        <div class="box-chart">
+                            <highcharts-chart *ngIf="DGM" [Highcharts]="highcharts" [options]="DGM"
+                                [(update)]="updateFlag" style="width: 100%; height: 100%; display: block;">
+                            </highcharts-chart>
+                        </div>
+                    </div>
+                </div>
+                <!-- Segunda corrida-->
+                <div fxLayout="row" class="row45" style="padding-right:10px;">
+                    <div fxFlex="25" fxFlex.md="50" fxFlex.sm="50" fxFlex.xs="100" class="box-data-full row95">
+                        <div class="box-chart">
+                            <highcharts-chart *ngIf="DSA" [Highcharts]="highcharts" [options]="DSA"
+                                [(update)]="updateFlag" style="width: 100%; height: 100%; display: block;">
+                            </highcharts-chart>
+                        </div>
+                    </div>
+                    <div fxFlex="25" fxFlex.md="50" fxFlex.sm="50" fxFlex.xs="100" class="box-data-full row95">
+                        <div class="box-chart">
+                            <highcharts-chart *ngIf="DVE" [Highcharts]="highcharts" [options]="DVE"
+                                [(update)]="updateFlag" style="width: 100%; height: 100%; display: block;">
+                            </highcharts-chart>
+                        </div>
+                    </div>
+                    <div fxFlex="25" fxFlex.md="50" fxFlex.sm="50" fxFlex.xs="100" class="box-data-full row95">
+                        <div class="box-chart">
+                            <highcharts-chart *ngIf="DAN" [Highcharts]="highcharts" [options]="DAN"
+                                [(update)]="updateFlag" style="width: 100%; height: 100%; display: block;">
+                            </highcharts-chart>
+                        </div>
+                    </div>
+                    <div fxFlex="25" fxFlex.md="50" fxFlex.sm="50" fxFlex.xs="100" class="box-data-full row95">
+                        <div class="box-chart">
+                            <highcharts-chart *ngIf="DTE" [Highcharts]="highcharts" [options]="DTE"
+                                [(update)]="updateFlag" style="width: 100%; height: 100%; display: block;">
+                            </highcharts-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="row-master">
+
+        <div fxFlex="49" class="column-x" style="padding-right: 25px">
+            <div fxLayout="column" class="row100">
+                <div class="cabecera-black row5"><label>AVANCE PROGRAMA CALIBRACIONES </label>
+                </div>
+                <div fxLayout="row" class="row45" style="padding-left:10px;">
+                    <div class="box-data-full row95" fxFlex="25%">
+
+                        <div fxLayout="row" class="box-data-child row30">
+                            <span class="card-label-top" style="width: 100%; padding: 5px 40px;">DIVISION
+                                CHUQUICAMATA</span>
+                        </div>
+
+                        <!-- <div fxLayout="row" class="box-data-child row35"><span class="subtitle"> CHUQUICAMATA</span></div> -->
+                        <div fxLayout="row" class="box-data-child row45"><img
+                                src='../../../../../assets/images/avatars/{{ calibraciones[1].Cantidad_Actual_Cumplimiento > 90 ? "verde.png":"rojo.png" }}'
+                                alt="image" class="img-good" /><span class="card-label-center">{{
+                                calibraciones[1].Cantidad_Actual_Cumplimiento / 100 | percent }} </span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-bottom">( {{
+                                calibraciones[1].Cantidad_Actual_Realizada }} / {{
+                                calibraciones[1].Cantidad_Actual_Programada }} )</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-bottom"><label>Real
+                                    /</label><span class="subtitle2"> Programa</span></span></div>
+                    </div>
+                    <div class="box-data-full row95" fxFlex="25%">
+                        <!-- <div fxLayout="row" class="box-data-child"><span class="card-label-top">DIVISION</span></div> -->
+                        <!-- <div fxLayout="row" class="box-data-child row35"><span class="subtitle"> DRT</span></div> -->
+                        <div fxLayout="row" class="box-data-child row30">
+                            <span class="card-label-top" style="width: 100%; padding: 5px 40px;">DIVISION RADOMIRO
+                                TOMIC</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child row45"><img
+                                src='../../../../../assets/images/avatars/{{ calibraciones[4].Cantidad_Actual_Cumplimiento > 90 ? "verde.png":"rojo.png" }}'
+                                alt="image" class="img-good" /><span class="card-label-center">{{
+                                calibraciones[4].Cantidad_Actual_Cumplimiento / 100 | percent }}</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-bottom">( {{
+                                calibraciones[4].Cantidad_Actual_Realizada }} / {{
+                                calibraciones[4].Cantidad_Actual_Programada }} )</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-bottom"><label>Real
+                                    /</label><span class="subtitle2"> Programa</span></span></div>
+                    </div>
+                    <div class="box-data-full row95" fxFlex="25">
+                        <!-- <div fxLayout="row" class="box-data-child"><span class="card-label-top">DIVISION</span></div> -->
+                        <!-- <div fxLayout="row" class="box-data-child row35"><span class="subtitle"> DMH</span></div> -->
+                        <div fxLayout="row" class="box-data-child row30">
+                            <span class="card-label-top" style="width: 100%; padding: 5px 40px;">DIVISION MINISTRO
+                                HALES</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child row45"><img
+                                src='../../../../../assets/images/avatars/{{ calibraciones[3].Cantidad_Actual_Cumplimiento > 90 ? "verde.png":"rojo.png" }}'
+                                alt="image" class="img-good" /><span class="card-label-center">{{
+                                calibraciones[3].Cantidad_Actual_Cumplimiento / 100 | percent }}</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-bottom">( {{
+                                calibraciones[3].Cantidad_Actual_Realizada }} / {{
+                                calibraciones[3].Cantidad_Actual_Programada }} )</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-bottom"><label>Real
+                                    /</label><span class="subtitle2"> Programa</span></span></div>
+                    </div>
+                    <div class="box-data-full row95" fxFlex="25%">
+                        <!-- <div fxLayout="row" class="box-data-child"><span class="card-label-top">DIVISION</span></div> -->
+                        <!-- <div fxLayout="row" class="box-data-child row35"><span class="subtitle"> DGM</span></div> -->
+                        <div fxLayout="row" class="box-data-child row30">
+                            <span class="card-label-top" style="width: 100%; padding: 5px 40px;">DIVISION GABRIELA
+                                MISTRAL</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child row45"><img
+                                src='../../../../../assets/images/avatars/{{ calibraciones[2].Cantidad_Actual_Cumplimiento > 90 ? "verde.png":"rojo.png" }}'
+                                alt="image" class="img-good" /><span class="card-label-center">{{
+                                calibraciones[2].Cantidad_Actual_Cumplimiento / 100 | percent }}</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-bottom">( {{
+                                calibraciones[2].Cantidad_Actual_Realizada }} / {{
+                                calibraciones[2].Cantidad_Actual_Programada }} )</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-bottom"><label>Real
+                                    /</label><span class="subtitle2"> Programa</span></span></div>
+                    </div>
+                </div>
+                <div fxLayout="row" class="row45" style="padding-left:10px;">
+                    <div class="box-data-full row95" fxFlex="25%">
+                        <!-- <div fxLayout="row" class="box-data-child"><span class="card-label-top">DIVISION</span></div> -->
+                        <!-- <div fxLayout="row" class="box-data-child row35"><span class="subtitle"> DSA</span></div> -->
+                        <div fxLayout="row" class="box-data-child row30">
+                            <span class="card-label-top" style="width: 100%; padding: 5px 40px;">DIVISION EL
+                                SALVADOR</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child row45"><img
+                                src='../../../../../assets/images/avatars/{{ calibraciones[5].Cantidad_Actual_Cumplimiento > 90 ? "verde.png":"rojo.png" }}'
+                                alt="image" class="img-good" /><span class="card-label-center"> {{
+                                calibraciones[5].Cantidad_Actual_Cumplimiento / 100 | percent }} </span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-bottom">( {{
+                                calibraciones[5].Cantidad_Actual_Realizada }} / {{
+                                calibraciones[5].Cantidad_Actual_Programada }} )</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-bottom"><label>Real
+                                    /</label><span class="subtitle2"> Programa</span></span></div>
+                    </div>
+
+                    <div class="box-data-full row95" fxFlex="25%">
+                        <!-- <div fxLayout="row" class="box-data-child"><span class="card-label-top">DIVISION</span></div> -->
+                        <!-- <div fxLayout="row" class="box-data-child row35"><span class="subtitle"> DVE</span></div> -->
+                        <div fxLayout="row" class="box-data-child row30">
+                            <span class="card-label-top" style="width: 100%; padding: 5px 40px;">DIVISION
+                                VENTANAS</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child row45"><img
+                                src='../../../../../assets/images/avatars/{{ calibraciones[7].Cantidad_Actual_Cumplimiento > 90 ? "verde.png":"rojo.png" }}'
+                                alt="image" class="img-good" /><span class="card-label-center">{{
+                                calibraciones[7].Cantidad_Actual_Cumplimiento / 100 | percent }}</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-bottom">( {{
+                                calibraciones[7].Cantidad_Actual_Realizada }} / {{
+                                calibraciones[7].Cantidad_Actual_Programada }} )</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-bottom"><label>Real
+                                    /</label><span class="subtitle2"> Programa</span></span></div>
+                    </div>
+
+                    <div class="box-data-full row95" fxFlex="25%">
+                        <!-- <div fxLayout="row" class="box-data-child"><span class="card-label-top">DIVISION</span></div> -->
+                        <!-- <div fxLayout="row" class="box-data-child row35"><span class="subtitle"> DAN</span></div> -->
+                        <div fxLayout="row" class="box-data-child row30">
+                            <span class="card-label-top" style="width: 100%; padding: 5px 40px;">DIVISION ANDINA</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child row45"><img
+                                src='../../../../../assets/images/avatars/{{ calibraciones[0].Cantidad_Actual_Cumplimiento > 90 ? "verde.png":"rojo.png" }}'
+                                alt="image" class="img-good" /><span class="card-label-center">{{
+                                calibraciones[0].Cantidad_Actual_Cumplimiento / 100 | percent }}</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-bottom"> ( {{
+                                calibraciones[0].Cantidad_Actual_Realizada }} / {{
+                                calibraciones[0].Cantidad_Actual_Programada }} )</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-bottom"><label>Real
+                                    /</label><span class="subtitle2"> Programa</span></span></div>
+                    </div>
+
+                    <div class="box-data-full row95" fxFlex="25%">
+                        <!-- <div fxLayout="row" class="box-data-child"><span class="card-label-top">DIVISION</span></div> -->
+                        <!-- <div fxLayout="row" class="box-data-child row35"><span class="subtitle"> DTE</span></div> -->
+                        <div fxLayout="row" class="box-data-child row30">
+                            <span class="card-label-top" style="width: 100%; padding: 5px 40px;">DIVISION EL
+                                TENIENTE</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child row45"><img
+                                src='../../../../../assets/images/avatars/{{ calibraciones[6].Cantidad_Actual_Cumplimiento > 90 ? "verde.png":"rojo.png" }}'
+                                alt="image" class="img-good" /><span
+                                class="card-label-center">{{calibraciones[6].Cantidad_Actual_Cumplimiento / 100 |
+                                percent }}</span></div>
+                        <!-- <div fxLayout="row" class="box-data-child"><span class="card-label-center">{{ "-" }}</span></div> -->
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-bottom">( {{
+                                calibraciones[6].Cantidad_Actual_Realizada }} / {{
+                                calibraciones[6].Cantidad_Actual_Programada }} )</span>
+                        </div>
+                        <div fxLayout="row" class="box-data-child"><span class="card-label-bottom"><label>Real
+                                    /</label><span class="subtitle2"> Programa</span></span></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div fxFlex="51" class="column-x" style="padding-left: 20px">
+            <div fxLayout="column" class="row100">
+
+                <div fxLayout="row" class="row100">
+                    <div fxFlex="49" class="row95" class="balance-parent">
+                        <div class="cabecera-black row5"><label style="font-size: 35px;">FECHA EJECUCIÓN BALANCE
+                                METALÚRGICO NORTE</label>
+                        </div>
+                        <div class="row90">
+                            <div fxLayout="row" class="row50" style="padding:0px 5px 15px 5px;">
+                                <div class="box-data-full row100" fxFlex="50" style="margin-right: 15px;padding: 5px;">
+                                    <!-- <div fxLayout="row" class="box-data-child"><span class="card-label-top">DIVISION</span></div> -->
+                                    <!-- <div fxLayout="row" class="box-data-child row35"><span class="subtitle"> DCH</span></div> -->
+                                    <div fxLayout="row" class="box-data-child row35"><span class="subtitle">DIVISION
+                                            CHUQUICAMATA</span></div>
+                                    <div fxLayout="row" class="box-data-child row35"><span class="card-label-fecha">{{
+                                            FDCH }}</span></div>
+                                    <!-- valores[1].value |
+                                    date: 'dd-MM-yyyy HH:mm' -->
+                                    <div fxLayout="row" class="box-data-child"><img
+                                            src='../../../../../assets/images/avatars/{{ estadofechaejecucion[1].value == 0 ? "verde.png":"rojo.png" }}'
+                                            alt="image" class="center-img" /></div>
+                                </div>
+                                <div class="box-data-full row100" fxFlex="50" style="padding:5px;">
+                                    <!-- <div fxLayout="row" class="box-data-child"><span class="card-label-top">DIVISION</span></div> -->
+                                    <!-- <div fxLayout="row" class="box-data-child row35"><span class="subtitle"> DRT</span></div> -->
+                                    <div fxLayout="row" class="box-data-child row35"><span class="subtitle">DIVISION
+                                            RADOMIRO TOMIC</span></div>
+                                    <div fxLayout="row" class="box-data-child row35"><span class="card-label-fecha">{{
+                                            FDRT }}</span></div>
+                                    <!-- valores[4].value |
+                                    date: 'dd-MM-yyyy HH:mm' -->
+                                    <div fxLayout="row" class="box-data-child"><img
+                                            src='../../../../../assets/images/avatars/{{ estadofechaejecucion[4].value == 0 ? "verde.png":"rojo.png" }}'
+                                            alt="image" class="center-img" /></div>
+                                </div>
+                            </div>
+                            <div fxLayout="row" class="row50" style="padding:0px 5px 15px 5px;">
+                                <div class="box-data-full row100" fxFlex="50" style="margin-right: 15px;padding: 5px;">
+                                    <!-- <div fxLayout="row" class="box-data-child"><span class="card-label-top">DIVISION</span></div> -->
+                                    <!-- <div fxLayout="row" class="box-data-child row35"><span class="subtitle"> DMH</span></div> -->
+                                    <div fxLayout="row" class="box-data-child row35"><span class="subtitle">DIVISION
+                                            MINISTRO HALES</span></div>
+                                    <div fxLayout="row" class="box-data-child row35"><span class="card-label-fecha">{{
+                                            FDMH }}</span></div>
+                                    <!-- valores[3].value |
+                                    date: 'dd-MM-yyyy HH:mm' -->
+                                    <div fxLayout="row" class="box-data-child"><img
+                                            src='../../../../../assets/images/avatars/{{ estadofechaejecucion[3].value == 0 ? "verde.png":"rojo.png" }}'
+                                            alt="image" class="center-img" /></div>
+                                </div>
+                                <div class="box-data-full row100" fxFlex="50" style="padding:5px;">
+                                    <!-- <div fxLayout="row" class="box-data-child"><span class="card-label-top">DIVISION</span></div> -->
+                                    <!-- <div fxLayout="row" class="box-data-child row35"><span class="subtitle"> DGM</span></div> -->
+                                    <div fxLayout="row" class="box-data-child row35"><span class="subtitle">DIVISION
+                                            GABRIELA MISTRAL</span></div>
+                                    <div fxLayout="row" class="box-data-child row35"><span class="card-label-fecha">{{
+                                            FDGM }}</span></div>
+                                    <!-- valores[2].value |
+                                    date: 'dd-MM-yyyy HH:mm' -->
+                                    <div fxLayout="row" class="box-data-child"><img
+                                            src='../../../../../assets/images/avatars/{{ estadofechaejecucion[2].value == 0 ? "verde.png":"rojo.png" }}'
+                                            alt="image" class="center-img" /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxFlex="51" class="row95" class="balance-parent">
+                        <div class="cabecera-black row5"><label style="font-size: 35px;">FECHA EJECUCIÓN BALANCE
+                                METALÚRGICO SUR</label>
+                        </div>
+                        <div class="row90">
+                            <div fxLayout="row" class="row50" style="padding:0px 5px 15px 5px;">
+                                <div class="box-data-full row100" fxFlex="50" style="margin-right: 15px;padding: 5px;">
+                                    <!-- <div fxLayout="row" class="box-data-child"><span class="card-label-top">DIVISION</span></div> -->
+                                    <!-- <div fxLayout="row" class="box-data-child row35"><span class="subtitle"> DSA</span></div> -->
+                                    <div fxLayout="row" class="box-data-child row35"><span class="subtitle">DIVISION EL
+                                            SALVADOR</span></div>
+                                    <div fxLayout="row" class="box-data-child row35"><span class="card-label-fecha">{{
+                                            FDSA }}</span></div>
+                                    <!-- valores[5].value |
+                                    date: 'dd-MM-yyyy HH:mm' -->
+                                    <div fxLayout="row" class="box-data-child"><img
+                                            src='../../../../../assets/images/avatars/{{ estadofechaejecucion[5].value == 0 ? "verde.png":"rojo.png" }}'
+                                            alt="image" class="center-img" /></div>
+                                </div>
+                                <div class="box-data-full row100" fxFlex="50" style="padding:5px;">
+                                    <!-- <div fxLayout="row" class="box-data-child"><span class="card-label-top">DIVISION</span></div> -->
+                                    <!-- <div fxLayout="row" class="box-data-child row35"><span class="subtitle"> DAN</span></div> -->
+                                    <div fxLayout="row" class="box-data-child row35"><span class="subtitle">DIVISION
+                                            ANDINA</span></div>
+                                    <div fxLayout="row" class="box-data-child row35"><span class="card-label-fecha">
+                                            {{ FDAN }}</span></div>
+                                    <!-- valores[0].value | date: 'dd-MM-yyyy HH:mm' -->
+                                    <div fxLayout="row" class="box-data-child"><img
+                                            src='../../../../../assets/images/avatars/{{ estadofechaejecucion[0].value == 0 ? "verde.png":"rojo.png" }}'
+                                            alt="image" class="center-img" /></div>
+                                </div>
+                            </div>
+                            <div fxLayout="row" class="row50" style="padding:0px 5px 15px 5px;">
+                                <div class="box-data-full row100" fxFlex="50" style="margin-right: 15px;padding: 5px;">
+                                    <!-- <div fxLayout="row" class="box-data-child"><span class="card-label-top">DIVISION</span></div> -->
+                                    <!-- <div fxLayout="row" class="box-data-child row35"><span class="subtitle"> DVE</span></div> -->
+                                    <div fxLayout="row" class="box-data-child row35"><span class="subtitle">DIVISION
+                                            VENTANA</span></div>
+                                    <div fxLayout="row" class="box-data-child row35"><span class="card-label-fecha">{{
+                                            FDVE }}</span></div>
+                                    <!-- valores[6].value |
+                                    date: 'dd-MM-yyyy HH:mm' -->
+                                    <div fxLayout="row" class="box-data-child"><img
+                                            src='../../../../../assets/images/avatars/{{ estadofechaejecucion[6].value == 0 ? "verde.png":"rojo.png" }}'
+                                            alt="image" class="center-img" /></div>
+                                </div>
+                                <div class="box-data-full row100" fxFlex="50" style="padding:5px;">
+                                    <!-- <div fxLayout="row" class="box-data-child"><span class="card-label-top">DIVISION</span></div> -->
+                                    <!-- <div fxLayout="row" class="box-data-child row35"><span class="subtitle"> DTE</span></div> -->
+                                    <div fxLayout="row" class="box-data-child row35"><span class="subtitle">DIVISION EL
+                                            TENIENTE</span></div>
+                                    <div fxLayout="row" class="box-data-child row35"><span class="card-label-fecha">{{
+                                            "-" }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

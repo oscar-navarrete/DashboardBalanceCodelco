@@ -1,0 +1,6 @@
+<mat-form-field>
+  <mat-label>Año</mat-label>
+  <mat-select (selectionChange)="onChangeYear($event)" [value]="getDefaultYear()">
+      <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
+  </mat-select>
+</mat-form-field>

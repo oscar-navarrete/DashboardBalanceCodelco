@@ -1,0 +1,105 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">{{dialogTitle}}</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+
+        <!-- <mat-toolbar-row class="toolbar-bottom py-16" fxLayout="column" fxLayoutAlign="center center">
+            <img [src]="feature.avatar" class="avatar contact-avatar huge m-0" [alt]="contact.name" />
+            <div class="contact-name mt-8">{{contact.name}} {{contact.lastName}}</div>
+        </mat-toolbar-row> -->
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 pb-0 m-0" fusePerfectScrollbar>
+        <div fxLayout="row" fxLayoutAlign="start start">
+            <mat-label class="secondary-text" style="padding-bottom: 10px !important;">&nbsp;Identificador: <b>{{ feature.id }}</b></mat-label>
+        </div>
+        <form [formGroup]="featureForm">
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Nombre</mat-label>
+                    <mat-icon matSuffix class="secondary-text">text_format</mat-icon>
+                    <input name="name" formControlName="name" matInput required>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Título</mat-label>
+                    <mat-icon matSuffix class="secondary-text">title</mat-icon>
+                    <input name="title" formControlName="title" matInput>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Icono</mat-label>
+                    <mat-icon matSuffix class="secondary-text">image</mat-icon>
+                    <input name="icon" formControlName="icon" matInput>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Ruta</mat-label>
+                    <mat-icon matSuffix class="secondary-text">forward</mat-icon>
+                    <input name="route" formControlName="route" matInput>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Descripción</mat-label>
+                    <mat-icon matSuffix class="secondary-text">format_align_justify</mat-icon>
+                    <input name="description" formControlName="description" matInput>
+                </mat-form-field>
+            </div>
+
+
+        </form>
+
+    </div>
+
+    <div class="sidebar-content" *ngIf="action==='edit' && groups.length > 0">
+        <div class="card">
+
+            <!-- SIDEBAR HEADER -->
+            <div class="header p-12" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon>group</mat-icon>
+                <span class="h4 font-weight-800">&nbsp;Grupos de Usuario asignados</span>
+            </div>
+            <!-- / SIDEBAR HEADER -->
+            <!-- SIDEBAR CONTENT -->
+            <div class="content py-16" fusePerfectScrollbar>
+                <div class="nav material2">
+                    <div mat-dialog-content class="p-16 pb-0 m-0" fusePerfectScrollbar>
+                        <mat-chip-list #chipList aria-label="Fish selection">
+                            <mat-chip *ngFor="let group of groups" class="chip" color="primary-600-bg" selected [selectable]="selectable" [removable]="removable" (removed)="remove(group)">{{ group.name}}
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+
+        <!--<button *ngIf="action === 'edit'" mat-button class="mr-8" (click)="matDialogRef.close(['delete',featureForm])" aria-label="Delete" matTooltip="Delete">
+            ELIMINAR
+        </button>-->
+
+        <button *ngIf="action !== 'edit'" mat-button class="save-button" (click)="matDialogRef.close(featureForm)" [disabled]="featureForm.invalid" aria-label="SAVE">
+            AGREGAR
+        </button>
+
+        <button *ngIf="action === 'edit'" mat-button class="save-button" (click)="matDialogRef.close(['save',featureForm])" [disabled]="featureForm.invalid" aria-label="SAVE">
+            GUARDAR
+        </button>
+
+    </div>
+</div>

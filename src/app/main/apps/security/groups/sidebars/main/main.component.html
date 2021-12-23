@@ -1,0 +1,29 @@
+<div class="sidebar-content">
+
+    <div class="card">
+        <!-- SIDEBAR HEADER -->
+        <div class="header p-12" fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon>verified_user</mat-icon>
+            <span class="h4 font-weight-800">&nbsp;Estado</span>
+        </div>
+        <!-- / SIDEBAR HEADER -->
+
+        <!-- SIDEBAR CONTENT -->
+        <div class="content py-16" fusePerfectScrollbar>
+            <div class="nav material2">
+                <div class="nav-item" aria-label="inbox">
+                    <a class="nav-link" matRipple (click)="changeFilter('active')" [ngClass]="{'active accent-100':filterBy === 'active'}">
+                        <span class="title">Grupos activos</span>
+                    </a>
+                </div>
+                <div class="nav-item" aria-label="inbox">
+                    <a class="nav-link" matRipple (click)="changeFilter('disabled')" [ngClass]="{'active accent-100':filterBy === 'disabled'}">
+                        <span class="title">Grupos inactivos</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- / SIDEBAR CONTENT -->

@@ -1,0 +1,33 @@
+// Import Fuse core library
+@import "@fuse/scss/core";
+// Import app.theme.scss
+@import "app/app.theme";
+@import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-material.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-balham.css";
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.ag-header-cell-label {
+    text-align: center;
+}
+
+body.theme-opms {
+    color: rgba(252, 252, 252, 0.87);
+    background: #202020;
+}
+
+.banner-column{
+    background-color: #303030;
+}
+
+.secondary-text{
+    color: #cdc9c9 !important;
+}

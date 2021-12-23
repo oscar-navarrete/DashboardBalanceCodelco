@@ -1,0 +1,32 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
+        <mat-toolbar-row fxLayout="row" style="place-content:center space-between">
+
+            <span class="title dialog-title">{{dialogTitle}}</span>
+
+            <div>
+                <button mat-icon-button (click)="maximize()"  aria-label="F11 dialog">
+                    <mat-icon *ngIf="!full">fullscreen</mat-icon>
+                    <mat-icon *ngIf="full">fullscreen_exit</mat-icon>
+                </button>
+    
+                <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+        
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div mat-dialog-content class="p-24 pb-0 m-0" fusePerfectScrollbar style="padding:0px !important;overflow: hidden;max-height: none;">
+        <iframe *ngIf="!full" [src]="url"  width="100%" style="border:0px;" class="special-height"></iframe>   <!--[srcdoc]="html"-->
+        <iframe *ngIf="full"  [src]="url"  width="100%" style="border:0px;" class="special-height-full"></iframe>
+    </div>
+</div>
+
+<!--
+<div *ngIf="!full" mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center" style="flex-direction:row-reverse">
+    <button mat-button class="save-button" (click)="dialogRef.close()" aria-label="SAVE">
+        ACEPTAR
+    </button>
+</div>
+-->

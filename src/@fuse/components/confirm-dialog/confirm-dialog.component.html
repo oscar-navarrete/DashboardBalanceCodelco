@@ -1,0 +1,6 @@
+<h1 matDialogTitle>Confirmación</h1>
+<div mat-dialog-content style="white-space: pre-line;">{{confirmMessage}}</div>
+<div mat-dialog-actions style="display:flex;flex-direction: row-reverse;"> 
+    <button mat-raised-button class="mat-accent mr-16" (click)="dialogRef.close(true)">Confirmar</button>
+    <button mat-button (click)="dialogRef.close(false)">Cancelar</button>
+</div>

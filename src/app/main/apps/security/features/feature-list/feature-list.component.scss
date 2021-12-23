@@ -1,0 +1,94 @@
+@import "src/@fuse/scss/fuse";
+features-feature-list {
+    display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+    .mat-table {
+        width: 100%;
+        background: transparent;
+        box-shadow: none;
+        .mat-column-checkbox {
+            flex: 0 1 64px;
+            padding-left: 18px;
+        }
+        .mat-column-icon {
+            flex: 0 1 64px;
+        }
+        .mat-column-description {
+            font-size: 12px !important;
+        }
+        .mat-column-buttons {
+            flex: 0 1 120px;
+        }
+        .mat-row {
+            position: relative;
+            cursor: pointer;
+            // padding: 8px;
+            .mat-cell {
+                min-width: 0;
+                &.mat-column-detail-button {
+                    flex: 0 1 auto;
+                    padding: 0 14px 0 0;
+                    @include media-breakpoint('gt-md') {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#add-contact-button {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    padding: 0;
+    z-index: 99;
+    @include media-breakpoint('xs') {
+        position: sticky;
+        top: calc(100vh - 120px);
+        bottom: auto;
+    }
+}
+
+.scrumboard-members-menu {
+    width: 240px;
+    .mat-checkbox-layout,
+    .mat-checkbox-label {
+        display: flex;
+        flex: 1;
+    }
+}
+
+.member-name {
+    font-size: 12px !important;
+    padding-left: 10px !important;
+}
+
+.search-wrapper {
+    width: 100%;
+    // margin-left: 5% !important;
+    // margin-right: 10% !important;
+    border-radius: 0px;
+    overflow: hidden;
+    @include mat-elevation(1);
+    .search {
+        width: 100%;
+        height: 25px;
+        line-height: 25px;
+        // padding: 2px 18px;
+        padding: 5px !important;
+        font-size: 12px !important;
+        input {
+            width: 80%;
+            height: 48px;
+            min-height: 48px;
+            max-height: 48px;
+            // padding: 5px 16px;
+            border: none;
+            outline: none;
+            background-color: transparent !important;
+            // color: white !important;
+        }
+    }
+}

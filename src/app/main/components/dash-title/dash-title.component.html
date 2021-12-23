@@ -1,0 +1,22 @@
+<!-- HEADER -->
+<div class="header accent p-16 p-sm-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
+
+    <!-- APP TITLE -->
+    <div fxLayout="row" fxLayoutAlign="start center">
+
+        <button mat-icon-button class="sidebar-toggle mr-12" fxHide.gt-sm>
+                <mat-icon>menu</mat-icon>
+            </button>
+
+        <div class="logo" fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="logo-icon mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">{{icon}}
+            </mat-icon>
+            <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                   {{title}}
+                </span>
+        </div>
+
+    </div>
+    <!-- / APP TITLE -->
+</div>
+<!-- / HEADER -->

@@ -1,0 +1,6 @@
+
+
+<app-calendar-year  (calendarChanged)="onChangeDate($event)" *ngIf="type=='year'"></app-calendar-year>
+<app-calendar-month (calendarChanged)="onChangeDate($event)" *ngIf="type=='month'"></app-calendar-month>
+<app-calendar-day   (calendarChanged)="onChangeDate($event)" *ngIf="type=='day'"></app-calendar-day>
+

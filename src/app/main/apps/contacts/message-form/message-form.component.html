@@ -1,0 +1,45 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">{{dialogTitle}}</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+
+        <mat-toolbar-row *ngIf="user !== undefined" class="toolbar-bottom py-16" fxLayout="column" fxLayoutAlign="center center">
+            <img [src]="user.avatar" class="avatar contact-avatar huge m-0" [alt]="user.name" (click)="callAvatarViewer()" />
+            <div class="contact-name mt-8">Para: {{user.name}} {{user.lastName}}</div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 pb-0 m-0" fusePerfectScrollbar>
+
+        <form [formGroup]="notificationForm">
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Asunto</mat-label>
+                    <mat-icon matSuffix class="secondary-text">subject</mat-icon>
+                    <input name="subject" formControlName="subject" matInput required>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" class="textarea-wrapper" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Mensaje</mat-label>
+                    <mat-icon matSuffix class="secondary-text">message</mat-icon>
+                    <textarea name="message" formControlName="message" matInput type="text" max-rows="10"></textarea>
+                </mat-form-field>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+        <button mat-button class="accent mr-8" (click)="matDialogRef.close(['send',notificationForm])" [disabled]="notificationForm.invalid" aria-label="Enviar" matTooltip="Enviar">
+            ENVIAR
+        </button>
+    </div>
+</div>
